@@ -1,9 +1,6 @@
 from tkinter import *
 import os
 
-def close():
-    screen4.destroy()
-
 def close2():
     screen5.destroy()
 
