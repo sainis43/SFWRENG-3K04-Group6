@@ -14,7 +14,6 @@ def session():
     Label(screen7, text = "Welcome to the dashboard").pack()
     
 
-
 def successful_login():
     session()
 
