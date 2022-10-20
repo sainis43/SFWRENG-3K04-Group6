@@ -11,7 +11,7 @@ def session():
     screen7 = Toplevel(screen)
     screen7.title("dashboard")
     screen7.geometry("400x400")
-    Label(text = "Welcome to the dashboard").pack()
+    Label(screen7, text = "Welcome to the dashboard").pack()
     
 
 
