@@ -55,17 +55,11 @@ def register():
     global password_entry
     
     root.title('Pacemaker Registration Screen')
-    root.geometry('925x500+300+200')
-    root.configure(bg='white')
-    root.resizable(False,False)
-
-    frame2 = Frame(root,width=350, height= 350, bg='white')
-    frame2.place(x=480,y=70)
-    img = PhotoImage(file = 'login.png')
-    Label(root, image = img, bg = 'white').place(x=50,y=80)
 
     frame = Frame(root,width=350, height= 350, bg='white')
     frame.place(x=480,y=70)
+    img = PhotoImage(file = 'login.png')
+    Label(root, image = img, bg = 'white').place(x=50,y=80)
 
     heading = Label(frame,text = 'Register', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
     heading.place(x=100,y=25)
@@ -131,9 +125,6 @@ def main_screen():
     global password
 
     root.title('Pacemaker Login Screen')
-    root.geometry('925x500+300+200')
-    root.configure(bg='white')
-    root.resizable(False,False)
 
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
@@ -197,4 +188,7 @@ def main_screen():
     root.mainloop()
 
 root = Tk()
+root.geometry('925x500+300+200')
+root.configure(bg='white')
+root.resizable(False,False)
 main_screen()
