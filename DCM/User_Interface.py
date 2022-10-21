@@ -9,10 +9,10 @@ def session():
     Label(screen7, text = "Welcome to the dashboard").pack()
 
 def incorrect_password():
-    Label(root, text = "Incorrect Password", fg = "red", font = ("calibri", 11)).pack()
+    Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
 
 def unknown_user():
-    Label(root, text = "Unknown User", fg = "red", font = ("calibri", 11)).pack()
+    Label(root, text = "Unknown User            ", fg = "red", bg='white', font = ("calibri", 11)).place(x=605, y=335)
 
 def register_user():
     username_info = user.get()
@@ -26,7 +26,7 @@ def register_user():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
-    Label(root, text = "Registration Successful", fg = "green", font = ("calibri", 11)).pack()
+    Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
     
 
 def login_verify():
@@ -62,7 +62,7 @@ def register():
     Label(root, image = img, bg = 'white').place(x=50,y=80)
 
     heading = Label(frame,text = 'Register', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
-    heading.place(x=100,y=25)
+    heading.place(x=110,y=25)
 
     user = StringVar()
     password = StringVar()
@@ -85,7 +85,7 @@ def register():
     username_entry.bind('<FocusIn>', onClick)
     username_entry.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=295,height=2,bg='black').place(x=30,y=127)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=127)
 
     ###
 
@@ -104,15 +104,15 @@ def register():
     password_entry.bind('<FocusIn>', onClick)
     password_entry.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=295,height=2,bg='black').place(x=30,y=197)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=197)
 
 
     ###
     Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=224)
     label=Label(frame, text="Already have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
-    label.place(x=75, y=290)
+    label.place(x=80, y=290)
     sign_up= Button(frame, width=6, text='Sign in', border=0, bg='white', cursor='hand2', fg='#983cc8', command = main_screen)
-    sign_up.place(x=215, y=290)
+    sign_up.place(x=225, y=290)
     
     root.mainloop()
     
@@ -133,7 +133,7 @@ def main_screen():
     frame.place(x=480,y=70)
 
     heading = Label(frame,text = 'Sign in', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
-    heading.place(x=100,y=25)
+    heading.place(x=115,y=25)
 
     username_verify = StringVar()
     password_verify = StringVar()
@@ -156,7 +156,7 @@ def main_screen():
     user.bind('<FocusIn>', onClick)
     user.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=295,height=2,bg='black').place(x=30,y=127)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=127)
 
     ###
 
@@ -175,7 +175,7 @@ def main_screen():
     password.bind('<FocusIn>', onClick)
     password.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=295,height=2,bg='black').place(x=30,y=197)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=197)
 
 
     ###
