@@ -21,19 +21,31 @@ def unknown_user():
     Label(root, text = "Unknown User            ", fg = "red", bg='white', font = ("calibri", 11)).place(x=605, y=335)
 
 def register_user():
-    username_info = user.get()
-    password_info = password.get()
+    global numUsers
 
-    file = open(username_info, "w")
-    file.write(username_info + "\n")
-    file.write(password_info)
-    file.close()
-
-    username_entry.delete(0, END)
-    password_entry.delete(0, END)
-
-    Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+    f = open("users.txt","r")
+    numUsers = int(f.readline())
+    f.close()
     
+    f = open("users.txt", "w")
+    numUsers += 1
+    f.write(str(numUsers))
+
+    if (numUsers <= 10):
+        username_info = user.get()
+        password_info = password.get()
+
+        file = open(username_info, "w")
+        file.write(username_info + "\n")
+        file.write(password_info)
+        file.close()
+
+        username_entry.delete(0, END)
+        password_entry.delete(0, END)
+
+        Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+    else:
+        Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=335)
 
 def login_verify():
     username1 = username_verify.get()
