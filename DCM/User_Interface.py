@@ -1,42 +1,21 @@
 from tkinter import *
+from tkinter import messagebox
 import os
 
-def close2():
-    screen5.destroy()
-
-def close3():
-    screen6.destroy()
-
 def session():
-    screen7 = Toplevel(screen)
+    screen7 = Toplevel(root)
     screen7.title("dashboard")
     screen7.geometry("400x400")
     Label(screen7, text = "Welcome to the dashboard").pack()
-    
-
-def successful_login():
-    session()
 
 def incorrect_password():
-    global screen5
-    
-    screen5 = Toplevel(screen)
-    screen5.title("success")
-    screen5.geometry("150x100")
-    Label(screen5, text = "Incorrect Password").pack()
-    Button(screen5, text = "Continue", command = close2).pack()
+    Label(root, text = "Incorrect Password", fg = "red", font = ("calibri", 11)).pack()
 
 def unknown_user():
-    global screen6
-    
-    screen6 = Toplevel(screen)
-    screen6.title("success")
-    screen6.geometry("150x100")
-    Label(screen6, text = "Unknown User").pack()
-    Button(screen6, text = "Continue", command = close3).pack()
+    Label(root, text = "Unknown User", fg = "red", font = ("calibri", 11)).pack()
 
 def register_user():
-    username_info = username.get()
+    username_info = user.get()
     password_info = password.get()
 
     file = open(username_info, "w")
@@ -47,95 +26,175 @@ def register_user():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
-    Label(screen2, text = "Registration Successful", fg = "green", font = ("calibri", 11)).pack()
+    Label(root, text = "Registration Successful", fg = "green", font = ("calibri", 11)).pack()
+    
 
 def login_verify():
     username1 = username_verify.get()
     password1 = password_verify.get()
-    username_entry1.delete(0, END)
-    password_entry1.delete(0, END)
+    user.delete(0, END)
+    password.delete(0, END)
 
     list_of_files = os.listdir()
     if username1 in list_of_files:
        file1 = open(username1, "r")
        verify = file1.read().splitlines()
        if password1 in verify:
-           successful_login()
+           session()
        else:
            incorrect_password()
     else:
         unknown_user()
 
 def register():
-    global screen2
-    global username
+
+    global root
+    global user
     global password
     global username_entry
     global password_entry
     
-    screen2 = Toplevel(screen)
-    screen2.title("Register")
-    screen2.geometry("300x250")
+    root.title('Pacemaker Registration Screen')
+    root.geometry('925x500+300+200')
+    root.configure(bg='white')
+    root.resizable(False,False)
 
-    username = StringVar()
+    frame2 = Frame(root,width=350, height= 350, bg='white')
+    frame2.place(x=480,y=70)
+    img = PhotoImage(file = 'login.png')
+    Label(root, image = img, bg = 'white').place(x=50,y=80)
+
+    frame = Frame(root,width=350, height= 350, bg='white')
+    frame.place(x=480,y=70)
+
+    heading = Label(frame,text = 'Register', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
+    heading.place(x=100,y=25)
+
+    user = StringVar()
     password = StringVar()
+     
+    ###
 
-    Label(screen2, text = "Enter details below").pack()
-    Label(screen2, text = "").pack()
-    Label(screen2, text = "Username * ").pack()
-    
-    username_entry = Entry(screen2, textvariable = username)
+    def onClick(x):
+        username_entry.delete(0,'end')
+
+    def onUnClick(x):
+        name = username_entry.get()
+        if name == '':
+            username_entry.insert(0, 'Username')
+
+
+    username_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = user)
     username_entry.pack()
+    username_entry.place(x=30,y=100)
+    username_entry.insert(0,'Username')
+    username_entry.bind('<FocusIn>', onClick)
+    username_entry.bind('<FocusOut>', onUnClick)
 
-    Label(screen2, text = "Password * ").pack()
-    
-    password_entry = Entry(screen2, textvariable = password)
+    Frame(frame,width=295,height=2,bg='black').place(x=30,y=127)
+
+    ###
+
+    def onClick(x):
+        password_entry.delete(0,'end')
+
+    def onUnClick(x):
+        name = password_entry.get()
+        if name == '':
+            password_entry.insert(0, 'Password')
+            
+    password_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password)
     password_entry.pack()
+    password_entry.place(x=30,y=170)
+    password_entry.insert(0,'Password')
+    password_entry.bind('<FocusIn>', onClick)
+    password_entry.bind('<FocusOut>', onUnClick)
+
+    Frame(frame,width=295,height=2,bg='black').place(x=30,y=197)
+
+
+    ###
+    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=224)
+    label=Label(frame, text="Already have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
+    label.place(x=75, y=290)
+    sign_up= Button(frame, width=6, text='Sign in', border=0, bg='white', cursor='hand2', fg='#983cc8', command = main_screen)
+    sign_up.place(x=215, y=290)
     
-    Label(screen2, text = "").pack()
-    Button(screen2, text = "Resigter", width = 10, height = 1, command = register_user).pack()
-
-def login():
-     global screen3
-     global username_verify
-     global password_verify
-     global username_entry1
-     global password_entry1
-     
-     screen3 = Toplevel(screen)
-     screen3.title("login")
-     screen3.geometry("300x250")
-     Label(screen3, text = "please enter details below").pack()
-     Label(screen3, text = "").pack()
-
-     username_verify = StringVar()
-     password_verify = StringVar()
-     
-     Label(screen3, text = "Username * ").pack()
-     username_entry1 = Entry(screen3, textvariable = username_verify)
-     username_entry1.pack()
-     
-     Label(screen3, text = "Password * ").pack()
-     password_entry1 = Entry(screen3, textvariable = password_verify)
-     password_entry1.pack()
-     Label(screen3, text = "").pack()
-     Button(screen3, text = "login", width = 10, height = 1, command = login_verify).pack()
-
+    root.mainloop()
+    
 
 def main_screen():
-    global screen
-    
-    screen = Tk()
-    screen.geometry("300x250")
-    screen.title("PaceMaker")
-    Label(text = "Pacemaker User Interface", bg = "grey", width = "300", height = "2", font = ("calibri", 13)).pack()
-    Button(text = "Login", height = "2", width = "30", command = login).pack()
-    Label(text = "").pack()
-    Button(text = "Register", height = "2", width = "30", command = register).pack()
-    
-    screen.mainloop
-    
+    global root
+    global username_verify
+    global password_verify
+    global user
+    global password
+
+    root.title('Pacemaker Login Screen')
+    root.geometry('925x500+300+200')
+    root.configure(bg='white')
+    root.resizable(False,False)
+
+    img = PhotoImage(file = 'login.png')
+    Label(root, image = img, bg = 'white').place(x=50,y=80)
+
+    frame = Frame(root,width=350, height= 350, bg='white')
+    frame.place(x=480,y=70)
+
+    heading = Label(frame,text = 'Sign in', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
+    heading.place(x=100,y=25)
+
+    username_verify = StringVar()
+    password_verify = StringVar()
+     
+    ###
+
+    def onClick(x):
+        user.delete(0,'end')
+
+    def onUnClick(x):
+        name = user.get()
+        if name == '':
+            user.insert(0, 'Username')
+
+
+    user = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = username_verify)
+    user.pack()
+    user.place(x=30,y=100)
+    user.insert(0,'Username')
+    user.bind('<FocusIn>', onClick)
+    user.bind('<FocusOut>', onUnClick)
+
+    Frame(frame,width=295,height=2,bg='black').place(x=30,y=127)
+
+    ###
+
+    def onClick(x):
+        password.delete(0,'end')
+
+    def onUnClick(x):
+        name = password.get()
+        if name == '':
+            password.insert(0, 'Password')
+            
+    password = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password_verify)
+    password.pack()
+    password.place(x=30,y=170)
+    password.insert(0,'Password')
+    password.bind('<FocusIn>', onClick)
+    password.bind('<FocusOut>', onUnClick)
+
+    Frame(frame,width=295,height=2,bg='black').place(x=30,y=197)
+
+
+    ###
+    Button(frame, width=39, pady=7, text='Sign in', bg='#983cc8', fg='white', border=0, command = login_verify).place(x=35, y=224)
+    label=Label(frame, text="Don't have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
+    label.place(x=75, y=290)
+    sign_up= Button(frame, width=6, text='Sign up', border=0, bg='white', cursor='hand2', fg='#983cc8', command = register)
+    sign_up.place(x=215, y=290)
+
+    root.mainloop()
+
+root = Tk()
 main_screen()
-
-
- 
