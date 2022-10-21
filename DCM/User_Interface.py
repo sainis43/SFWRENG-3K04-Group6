@@ -3,10 +3,16 @@ from tkinter import messagebox
 import os
 
 def session():
-    screen7 = Toplevel(root)
-    screen7.title("dashboard")
-    screen7.geometry("400x400")
-    Label(screen7, text = "Welcome to the dashboard").pack()
+    root.geometry('925x800')
+    root.configure(bg='white')
+    root.resizable(False,False)
+    root.title('Pacemaker Dashboard')
+
+    frame = Frame(root,width=350, height= 350, bg='white')
+    frame.place(x=480,y=70)
+
+    frame2 = Frame(root,width=400, height= 400, bg='white')
+    frame2.place(x=50,y=80)
 
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
@@ -168,7 +174,7 @@ def main_screen():
         if name == '':
             password.insert(0, 'Password')
             
-    password = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password_verify)
+    password = Entry(frame, show="*", width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password_verify)
     password.pack()
     password.place(x=30,y=170)
     password.insert(0,'Password')
