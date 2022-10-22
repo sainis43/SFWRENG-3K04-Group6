@@ -17,6 +17,12 @@ def session():
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
 
+def username_empty():
+    Label(root, text = "Username Field Empty",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
+
+def password_empty():
+    Label(root, text = "Password Field Empty",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
+    
 def unknown_user():
     Label(root, text = "Unknown User            ", fg = "red", bg='white', font = ("calibri", 11)).place(x=605, y=335)
 
@@ -123,7 +129,6 @@ def register():
     password_entry.bind('<FocusOut>', onUnClick)
 
     Frame(frame,width=288,height=2,bg='black').place(x=30,y=197)
-
 
     ###
     Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=224)
