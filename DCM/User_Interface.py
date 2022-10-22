@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 import os
-
+    
 def session():
 #    global dashboard_screen
 #    dashboard_screen = Toplevel(root)
@@ -20,10 +20,26 @@ def session():
     frame2 = Frame(root,width=400, height= 400, bg='white')
     frame2.place(x=50,y=80)
 
-    options = ["DDDR","DDIR","DOOR","VDDR","VVIR","VOOR","AAIR","AOOR","DDD","DDI","DOO","VDD","VVI","VOO","AAI","AOO","VVT","AAT"]
-    menu = ttk.Combobox(root, value=options, state = "readonly").place(x=20, y=20)
+    options = ["AOO",
+               "VOO",
+               "AAI",
+               "VVI"]
+    def optionselected(event):
+        if(menu.get() == "AOO"):
+            AOO()
+        elif(menu.get() == "VOO"):
+            VOO()
+        elif(menu.get() == "AAI"):
+            AAI()
+        elif(menu.get() == "VVI"):
+            VVI()
+            
+    menu = ttk.Combobox(root, value=options, state = "readonly")
+    menu.current(0)
+    menu.bind("<<ComboboxSelected>>", optionselected)
+    menu.pack()
 
-    #start of conditions
+def AOO():
     Label(root, text = "Lower Rate Limit",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
     Label(root, text = "Upper Rate Limit",bg = "white",fg = "black", font = ("calibri", 14)).place(x=200,y=70)
     Label(root, text = "Maximum Sensor Rate",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=120)
@@ -50,8 +66,24 @@ def session():
     Label(root, text = "Response Factor",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=570)
     Label(root, text = "Recovery Time",bg = "white", fg = "black", font = ("calibri", 14)).place(x=700,y=20)
 
-
+def VOO():
+    frame = Frame(root,width=925, height= 600, bg='white')
+    frame.place(x=0,y=20)
     
+    #Insert VOO frame in here
+    Label(root, text = "VOO Mode",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
+    
+def AAI():
+    frame = Frame(root,width=925, height= 600, bg='white')
+    frame.place(x=0,y=20)
+    #Insert AAI frame in here
+    Label(root, text = "AAI Mode",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
+    
+def VVI():
+    frame = Frame(root,width=925, height= 600, bg='white')
+    frame.place(x=0,y=20)
+    #Insert VVI frame in here
+    Label(root, text = "VVI Mode",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
 
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
