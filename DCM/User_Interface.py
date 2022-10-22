@@ -1,8 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import os
 
 def session():
+#    global dashboard_screen
+#    dashboard_screen = Toplevel(root)
+#    dashboard_screen.title("Pacemaker Dashboard")
+#    dashboard_screen.geometry("925x600")
+
     root.geometry('925x600')
     root.configure(bg='white')
     root.resizable(False,False)
@@ -13,6 +19,9 @@ def session():
 
     frame2 = Frame(root,width=400, height= 400, bg='white')
     frame2.place(x=50,y=80)
+
+    options = ["DDDR","DDIR","DOOR","VDDR","VVIR","VOOR","AAIR","AOOR","DDD","DDI","DOO","VDD","VVI","VOO","AAI","AOO","VVT","AAT"]
+    menu = ttk.Combobox(root, value=options, state = "readonly").place(x=20, y=20)
 
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
@@ -202,7 +211,7 @@ def main_screen():
 
 
     ###
-    Button(frame, width=39, pady=7, text='Sign in', bg='#983cc8', fg='white', border=0, command = login_verify).place(x=35, y=224)
+    Button(frame, width=39, pady=7, text='Sign in', bg='#983cc8', fg='white', border=0, command = lambda:[login_verify()]).place(x=35, y=224)
     label=Label(frame, text="Don't have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
     label.place(x=75, y=290)
     sign_up= Button(frame, width=6, text='Sign up', border=0, bg='white', cursor='hand2', fg='#983cc8', command = register)
