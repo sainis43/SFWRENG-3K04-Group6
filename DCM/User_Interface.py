@@ -23,6 +23,36 @@ def session():
     options = ["DDDR","DDIR","DOOR","VDDR","VVIR","VOOR","AAIR","AOOR","DDD","DDI","DOO","VDD","VVI","VOO","AAI","AOO","VVT","AAT"]
     menu = ttk.Combobox(root, value=options, state = "readonly").place(x=20, y=20)
 
+    #start of conditions
+    Label(root, text = "Lower Rate Limit",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
+    Label(root, text = "Upper Rate Limit",bg = "white",fg = "black", font = ("calibri", 14)).place(x=200,y=70)
+    Label(root, text = "Maximum Sensor Rate",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=120)
+    Label(root, text = "Fixed AV Delay",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=170)
+    Label(root, text = "Dynamic AV Delay",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=220)
+    Label(root, text = "Sensed AV Delay Offset",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=270)
+    Label(root, text = "Atrial Amplitude",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=320)
+    Label(root, text = "Ventricular Amplitude",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=370)
+    Label(root, text = "Atrial Pulse Width",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=420)
+    Label(root, text = "Ventricular Pulse Width",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=470)
+    Label(root, text = "Atrial Sensitivity",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=520)
+    Label(root, text = "Ventricular Sensitivity",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=570)
+    Label(root, text = "VRP",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=20)
+    Label(root, text = "ARP",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=70)
+    Label(root, text = "PVARP",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=120)
+    Label(root, text = "PVARP Extension",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=170)
+    Label(root, text = "Hysteresis",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=220)
+    Label(root, text = "Rate Smoothing",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=270)
+    Label(root, text = "ATR Duration",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=320)
+    Label(root, text = "ATR Fallback Mode",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=370)
+    Label(root, text = "ATR Fallback Time",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=420)
+    Label(root, text = "Activity Threshold",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=470)
+    Label(root, text = "Reaction Time",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=520)
+    Label(root, text = "Response Factor",bg = "white", fg = "black", font = ("calibri", 14)).place(x=500,y=570)
+    Label(root, text = "Recovery Time",bg = "white", fg = "black", font = ("calibri", 14)).place(x=700,y=20)
+
+
+    
+
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
 
