@@ -3,7 +3,7 @@ from tkinter import messagebox
 import os
 
 def session():
-    root.geometry('925x800')
+    root.geometry('925x600')
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
