@@ -163,11 +163,13 @@ def AOO():
 
 
     #LRL
-        if(int(LRL_value) > 50 or int(LRL_value) < 30 or int(LRL_value) > 175 or int(LRL_value) < 90): #having trouble with LRL
+        if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
             if(int(LRL_value) % 5 != 0):
                 Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-        elif(int(LRL_value) <= 90 or int(LRL_value) >= 50):
-            Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+        else:
+            if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
+                Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            
 
     #URL
         if(int(URL_value) > 50 or int(URL_value) < 175):
