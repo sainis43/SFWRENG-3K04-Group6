@@ -206,44 +206,45 @@ def AOO():
         ARP_value = ARP_entry.get()
 
 
-        #if(LRL_value == "" or URL_value == "" or AA_value == "" or LRL_value == "" or LRL_value == "" or 
-
-        #LRL##################################################################################################################################################
-        if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-            if(int(LRL_value) % 5 != 0):
-                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+        if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""):
+            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=20, y=100)
         else:
-            if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
-                Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            
-
-        #URL##################################################################################################################################################
-        if(int(URL_value) > 50 and int(LRL_value) < 175):
-            if(int(URL_value) % 5 != 0):
-                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-        else:
-            Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-
-        #AA###################################################################################################################################################
-        if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2):
-            if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)):
-                Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-        elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0):
-            if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)):
-                Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-        else:
-            if(float(AA_value) != 0):
-                Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-
-        #APW##################################################################################################################################################
-        if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9):
-            if(not(float(format((float(APW_value) % 0.5), ".4f")) == 0.1 or float(format((float(APW_value) % 0.1), ".4f")) == 0)):
-                Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-        else:
-            if(float(APW_value) != 0.05):
-                Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-
+            #LRL##################################################################################################################################################
+            if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
+                if(int(LRL_value) % 5 != 0):
+                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            else:
+                if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
+                    Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
                 
+
+            #URL##################################################################################################################################################
+            if(int(URL_value) > 50 and int(LRL_value) < 175):
+                if(int(URL_value) % 5 != 0):
+                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+            else:
+                Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+
+            #AA###################################################################################################################################################
+            if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2):
+                if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)):
+                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
+            elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0):
+                if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)):
+                    Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
+            else:
+                if(float(AA_value) != 0):
+                    Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
+
+            #APW##################################################################################################################################################
+            if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9):
+                if(not(float(format((float(APW_value) % 0.5), ".4f")) == 0.1 or float(format((float(APW_value) % 0.1), ".4f")) == 0)):
+                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
+            else:
+                if(float(APW_value) != 0.05):
+                    Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
+
+            
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=165, y=450)
     
