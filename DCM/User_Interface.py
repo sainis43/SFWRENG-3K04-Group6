@@ -98,9 +98,9 @@ def register_user():
     inp2 = password_entry.get()
 
     if(inp1 == "Username"):
-        Label(root, text = "Username Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+        Label(root, text = "Username Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=405)
     elif(inp2 == "Password"):
-        Label(root, text = "Password Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+        Label(root, text = "Password Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=405)
     else:
         f = open("users.txt","r")
         numUsers = int(f.readline())
@@ -122,9 +122,9 @@ def register_user():
             username_entry.delete(0, END)
             password_entry.delete(0, END)
 
-            Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+            Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=405)
         else:
-            Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=335)
+            Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=405)
 
 def login_verify():
     username1 = username_verify.get()
@@ -148,12 +148,14 @@ def register():
     global root
     global user
     global password
+    global serial
     global username_entry
     global password_entry
+    global serial_entry
     
     root.title('Pacemaker Registration Screen')
 
-    frame = Frame(root,width=350, height= 350, bg='white')
+    frame = Frame(root,width=350, height= 450, bg='white')
     frame.place(x=480,y=70)
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
@@ -163,6 +165,7 @@ def register():
 
     user = StringVar()
     password = StringVar()
+    serial = StringVar()
      
     ###
 
@@ -204,11 +207,32 @@ def register():
     Frame(frame,width=288,height=2,bg='black').place(x=30,y=197)
 
     ###
-    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=224)
+
+    def onClick(x):
+        serial_entry.delete(0,'end')
+
+    def onUnClick(x):
+        name = serial_entry.get()
+        if name == '':
+            serial_entry.insert(0, 'Serial Number')
+            
+    serial_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = serial)
+    serial_entry.pack()
+    serial_entry.place(x=30,y=240)
+    serial_entry.insert(0,'Serial Number')
+    serial_entry.bind('<FocusIn>', onClick)
+    serial_entry.bind('<FocusOut>', onUnClick)
+
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=267)
+
+    ###
+
+    
+    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=294)
     label=Label(frame, text="Already have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
-    label.place(x=80, y=290)
+    label.place(x=80, y=360)
     sign_up= Button(frame, width=6, text='Sign in', border=0, bg='white', cursor='hand2', fg='#983cc8', command = main_screen)
-    sign_up.place(x=225, y=290)
+    sign_up.place(x=225, y=360)
     
     root.mainloop()
     
@@ -225,7 +249,7 @@ def main_screen():
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
 
-    frame = Frame(root,width=350, height= 350, bg='white')
+    frame = Frame(root,width=350, height= 450, bg='white')
     frame.place(x=480,y=70)
 
     heading = Label(frame,text = 'Sign in', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
