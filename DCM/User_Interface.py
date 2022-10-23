@@ -265,14 +265,21 @@ def VOO():
         ARP_value = ARP_entry.get()
 
 
-    #LRL
+    #LRL##################################################################################################################################################
+        if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
+            if(int(LRL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+        else:
+            if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
+                Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            
 
-
-    #URL
-        if(int(URL_value) > 50 or int(URL_value) < 175):
+    #URL##################################################################################################################################################
+        if(int(URL_value) > 50 and int(LRL_value) < 175):
+            if(int(URL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+        else:
             Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-        elif(int(URL_value) % 5 != 0):
-            Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
     #VA
 
@@ -353,14 +360,21 @@ def AAI():
         ARP_value = ARP_entry.get()
 
 
-    #LRL
+    #LRL##################################################################################################################################################
+        if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
+            if(int(LRL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+        else:
+            if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
+                Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            
 
-
-    #URL
-        if(int(URL_value) > 50 or int(URL_value) < 175):
+    #URL##################################################################################################################################################
+        if(int(URL_value) > 50 and int(LRL_value) < 175):
+            if(int(URL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+        else:
             Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-        elif(int(URL_value) % 5 != 0):
-            Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
     #AA
 
@@ -447,14 +461,21 @@ def VVI():
         ARP_value = ARP_entry.get()
 
 
-    #LRL
+    #LRL##################################################################################################################################################
+        if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
+            if(int(LRL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+        else:
+            if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
+                Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            
 
-
-    #URL
-        if(int(URL_value) > 50 or int(URL_value) < 175):
+    #URL##################################################################################################################################################
+        if(int(URL_value) > 50 and int(LRL_value) < 175):
+            if(int(URL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+        else:
             Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-        elif(int(URL_value) % 5 != 0):
-            Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
     #VA 
 
