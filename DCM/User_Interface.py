@@ -36,7 +36,7 @@ def session():
     menu.current(0)
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
-
+    
 def OFF():
     LRL = StringVar()
     URL = StringVar()
@@ -47,7 +47,7 @@ def OFF():
     VRP = StringVar()
     ARP = StringVar()
     
-    frame = Frame(root,width=550, height= 450, bg='white')
+    frame = Frame(root,width=550, height= 500, bg='white')
     frame.place(x=180,y=80)
     
     Label(frame, text = "Lower Rate Limit (ppm)", bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
@@ -90,7 +90,7 @@ def OFF():
     ARP_entry.pack()
     ARP_entry.place(x=320,y=370)
     
-    
+    #Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=165, y=450)
     
 
 def AOO():
@@ -104,7 +104,7 @@ def AOO():
     VRP = StringVar()
     ARP = StringVar()
 
-    frame = Frame(root,width=550, height= 450, bg='white')
+    frame = Frame(root,width=750, height= 500, bg='white')
     frame.place(x=180,y=80)
     
     Label(frame, text = "Lower Rate Limit (ppm)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
@@ -150,8 +150,17 @@ def AOO():
     ARP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, font=('Microsoft YaHei UI Light',11), textvariable = ARP)
     ARP_entry.pack()
     ARP_entry.place(x=320,y=370)
-    
 
+    def applychanges():
+        LRL_value = LRL_entry.get()
+        URL_value = URL.get()
+
+        if(int(LRL_value) > 175):
+            Label(frame, text = "Error Message", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
+            print("High")
+        
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=165, y=450)
+    
 
 def VOO():
     LRL = StringVar()
