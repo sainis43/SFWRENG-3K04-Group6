@@ -87,12 +87,6 @@ def VVI():
 
 def incorrect_password():
     Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
-
-def username_empty():
-    Label(root, text = "Username Field Empty",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
-
-def password_empty():
-    Label(root, text = "Password Field Empty",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
     
 def unknown_user():
     Label(root, text = "Unknown User            ", fg = "red", bg='white', font = ("calibri", 11)).place(x=605, y=335)
@@ -100,29 +94,37 @@ def unknown_user():
 def register_user():
     global numUsers
 
-    f = open("users.txt","r")
-    numUsers = int(f.readline())
-    f.close()
-    
-    f = open("users.txt", "w")
-    numUsers += 1
-    f.write(str(numUsers))
+    inp1 = username_entry.get()
+    inp2 = password_entry.get()
 
-    if (numUsers <= 10):
-        username_info = user.get()
-        password_info = password.get()
-
-        file = open(username_info, "w")
-        file.write(username_info + "\n")
-        file.write(password_info)
-        file.close()
-
-        username_entry.delete(0, END)
-        password_entry.delete(0, END)
-
-        Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+    if(inp1 == "Username"):
+        Label(root, text = "Username Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+    elif(inp2 == "Password"):
+        Label(root, text = "Password Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=335)
     else:
-        Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=335)
+        f = open("users.txt","r")
+        numUsers = int(f.readline())
+        f.close()
+        
+        f = open("users.txt", "w")
+        numUsers += 1
+        f.write(str(numUsers))
+
+        if (numUsers <= 10):
+            username_info = user.get()
+            password_info = password.get()
+
+            file = open(username_info, "w")
+            file.write(username_info + "\n")
+            file.write(password_info)
+            file.close()
+
+            username_entry.delete(0, END)
+            password_entry.delete(0, END)
+
+            Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=335)
+        else:
+            Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=335)
 
 def login_verify():
     username1 = username_verify.get()
