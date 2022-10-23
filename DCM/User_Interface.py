@@ -48,6 +48,7 @@ def LabelsTemplate(frame):
     Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
     Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
     Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
+    Label(root, text = "Pacemaker Disconnected", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=500,y=550)
 
 def ModesTemplate(mode, frame):
 
