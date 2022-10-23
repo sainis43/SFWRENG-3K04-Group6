@@ -37,24 +37,129 @@ def session():
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
 
-def ModesTemplate(frame):
+def LabelsTemplate(frame):
     
     Label(frame, text = "Lower Rate Limit (ppm)", bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
-
     Label(frame, text = "Upper Rate Limit (ppm)",bg = "white",fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=70)
-    
     Label(frame, text = "Atrial Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=120)
-    
-    Label(frame, text = "Atrial Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=170)
-    
+    Label(frame, text = "Atrial Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=170) 
     Label(frame, text = "Ventricular Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=220)
-    
     Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
-    
     Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
-    
     Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
 
+def ModesTemplate(mode, frame):
+
+    global LRL 
+    global URL 
+    global AA 
+    global APW 
+    global VA 
+    global VPW 
+    global VRP 
+    global ARP
+    global LRL_entry 
+    global URL_entry 
+    global AA_entry  
+    global APW_entry  
+    global VA_entry  
+    global VPW_entry  
+    global VRP_entry  
+    global ARP_entry 
+    
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    
+    LRLtextboxState = "readonly"
+    URLtextboxState = "readonly"
+    AAtextboxState = "readonly"
+    APWtextboxState = "readonly"
+    VAtextboxState = "readonly"
+    VPWtextboxState = "readonly"
+    VRPtextboxState = "readonly"
+    ARPtextboxState = "readonly"
+        
+    if(mode == "AOO"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+    elif(mode == "AAI"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        ARPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+    elif(mode == "VOO"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        VAtextboxState = "normal"
+        VPWtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
+    elif(mode == "VVI"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        VAtextboxState = "normal"
+        VPWtextboxState = "normal"
+        VRPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=347)
+    else:
+        mode = "OFF"
+        
+    LRL_entry = Entry(frame, width=25, state = LRLtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
+    LRL_entry.pack()
+    LRL_entry.place(x=320,y=20)
+    
+    URL_entry = Entry(frame, width=25, state = URLtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
+    URL_entry.pack()
+    URL_entry.place(x=320,y=70)
+    
+    AA_entry = Entry(frame, width=25, state = AAtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
+    AA_entry.pack()
+    AA_entry.place(x=320,y=120)
+    
+    APW_entry = Entry(frame, width=25, state = APWtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
+    APW_entry.pack()
+    APW_entry.place(x=320,y=170)
+    
+    VA_entry = Entry(frame, width=25, state = VAtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
+    VA_entry.pack()
+    VA_entry.place(x=320,y=220)
+    
+    VPW_entry = Entry(frame, width=25, state = VPWtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
+    VPW_entry.pack()
+    VPW_entry.place(x=320,y=270)
+    
+    VRP_entry = Entry(frame, width=25, state = VRPtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
+    VRP_entry.pack()
+    VRP_entry.place(x=320,y=320)
+    
+    ARP_entry = Entry(frame, width=25, state = ARPtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
+    ARP_entry.pack()
+    ARP_entry.place(x=320,y=370)
+    
 def OFF():
     LRL = StringVar()
     URL = StringVar()
@@ -68,39 +173,9 @@ def OFF():
     frame = Frame(root,width=550, height= 500, bg='white')
     frame.place(x=180,y=80)
 
-    ModesTemplate(frame)
+    LabelsTemplate(frame)
     
-    LRL_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = LRL)
-    LRL_entry.pack()
-    LRL_entry.place(x=320,y=20)
-
-    URL_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = URL)
-    URL_entry.pack()
-    URL_entry.place(x=320,y=70)
-    
-    AA_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = AA)
-    AA_entry.pack()
-    AA_entry.place(x=320,y=120)
-    
-    APW_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = APW)
-    APW_entry.pack()
-    APW_entry.place(x=320,y=170)
-    
-    VA_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = VA)
-    VA_entry.pack()
-    VA_entry.place(x=320,y=220)
-    
-    VPW_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = VPW)
-    VPW_entry.pack()
-    VPW_entry.place(x=320,y=270)
-    
-    VRP_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = VRP)
-    VRP_entry.pack()
-    VRP_entry.place(x=320,y=320)
-    
-    ARP_entry = Entry(frame, width=25, fg='black', border=0, font=('Microsoft YaHei UI Light',11), state = "readonly", readonlybackground =  "white", textvariable = ARP)
-    ARP_entry.pack()
-    ARP_entry.place(x=320,y=370)
+    ModesTemplate("OFF", frame)
     
 
 def AOO():
@@ -117,44 +192,9 @@ def AOO():
     frame = Frame(root,width=750, height= 500, bg='white')
     frame.place(x=180,y=80)
     
-    ModesTemplate(frame)
+    LabelsTemplate(frame)
+    ModesTemplate("AOO", frame)
     
-    LRL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
-    LRL_entry.pack()
-    LRL_entry.place(x=320,y=20)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-    
-    URL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
-    URL_entry.pack()
-    URL_entry.place(x=320,y=70)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-    
-    AA_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
-    AA_entry.pack()
-    AA_entry.place(x=320,y=120)  
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-    
-    APW_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
-    APW_entry.pack()
-    APW_entry.place(x=320,y=170)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-    
-    VA_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white", fg='black', border=0, font=('Microsoft YaHei UI Light',11), textvariable = VA)
-    VA_entry.pack()
-    VA_entry.place(x=320,y=220)
-    
-    VPW_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, font=('Microsoft YaHei UI Light',11), textvariable = VPW)
-    VPW_entry.pack()
-    VPW_entry.place(x=320,y=270)
-    
-    VRP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, font=('Microsoft YaHei UI Light',11), textvariable = VRP)
-    VRP_entry.pack()
-    VRP_entry.place(x=320,y=320)
-    
-    ARP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, font=('Microsoft YaHei UI Light',11), textvariable = ARP)
-    ARP_entry.pack()
-    ARP_entry.place(x=320,y=370)
-
     def applychanges():
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
@@ -213,51 +253,10 @@ def VOO():
 
     frame = Frame(root,width=550, height= 450, bg='white')
     frame.place(x=180,y=80)
-    
-    Label(frame, text = "Lower Rate Limit (ppm)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
-    LRL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
-    LRL_entry.pack()
-    LRL_entry.place(x=320,y=20)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-    
-    Label(frame, text = "Upper Rate Limit (ppm)",bg = "white",fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=70)
-    URL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
-    URL_entry.pack()
-    URL_entry.place(x=320,y=70)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-    
-    Label(frame, text = "Atrial Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=120)
-    AA_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
-    AA_entry.pack()
-    AA_entry.place(x=320,y=120)
-    
-    Label(frame, text = "Atrial Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=170)
-    APW_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
-    APW_entry.pack()
-    APW_entry.place(x=320,y=170)
-    
-    Label(frame, text = "Ventricular Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=220)
-    VA_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
-    VA_entry.pack()
-    VA_entry.place(x=320,y=220)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
-    
-    Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
-    VPW_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
-    VPW_entry.pack()
-    VPW_entry.place(x=320,y=270)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
-    
-    Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
-    VRP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
-    VRP_entry.pack()
-    VRP_entry.place(x=320,y=320)
-    
-    Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
-    ARP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
-    ARP_entry.pack()
-    ARP_entry.place(x=320,y=370)
 
+    LabelsTemplate(frame)
+    ModesTemplate("VOO", frame)
+    
     def applychanges():
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
@@ -307,51 +306,9 @@ def AAI():
 
     frame = Frame(root,width=550, height= 450, bg='white')
     frame.place(x=180,y=80)
-    
-    Label(frame, text = "Lower Rate Limit (ppm)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
-    LRL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
-    LRL_entry.pack()
-    LRL_entry.place(x=320,y=20)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-    
-    Label(frame, text = "Upper Rate Limit (ppm)",bg = "white",fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=70)
-    URL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
-    URL_entry.pack()
-    URL_entry.place(x=320,y=70)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-    
-    Label(frame, text = "Atrial Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=120)
-    AA_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
-    AA_entry.pack()
-    AA_entry.place(x=320,y=120)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-    
-    Label(frame, text = "Atrial Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=170)
-    APW_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
-    APW_entry.pack()
-    APW_entry.place(x=320,y=170)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-    
-    Label(frame, text = "Ventricular Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=220)
-    VA_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
-    VA_entry.pack()
-    VA_entry.place(x=320,y=220)
-    
-    Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
-    VPW_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
-    VPW_entry.pack()
-    VPW_entry.place(x=320,y=270)
-    
-    Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
-    VRP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
-    VRP_entry.pack()
-    VRP_entry.place(x=320,y=320)
-    
-    Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
-    ARP_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
-    ARP_entry.pack()
-    ARP_entry.place(x=320,y=370)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+
+    LabelsTemplate(frame)
+    ModesTemplate("AAI", frame)
 
     def applychanges():
         LRL_value = LRL_entry.get()
@@ -408,51 +365,9 @@ def VVI():
 
     frame = Frame(root,width=550, height= 450, bg='white')
     frame.place(x=180,y=80)
-    
-    Label(frame, text = "Lower Rate Limit (ppm)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
-    LRL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
-    LRL_entry.pack()
-    LRL_entry.place(x=320,y=20)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-    
-    Label(frame, text = "Upper Rate Limit (ppm)",bg = "white",fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=70)
-    URL_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
-    URL_entry.pack()
-    URL_entry.place(x=320,y=70)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-    
-    Label(frame, text = "Atrial Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=120)
-    AA_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
-    AA_entry.pack()
-    AA_entry.place(x=320,y=120)
-    
-    Label(frame, text = "Atrial Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=170)
-    APW_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
-    APW_entry.pack()
-    APW_entry.place(x=320,y=170)
-    
-    Label(frame, text = "Ventricular Amplitude (V)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=220)
-    VA_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
-    VA_entry.pack()
-    VA_entry.place(x=320,y=220)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
-    
-    Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
-    VPW_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
-    VPW_entry.pack()
-    VPW_entry.place(x=320,y=270)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
-    
-    Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
-    VRP_entry = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
-    VRP_entry.pack()
-    VRP_entry.place(x=320,y=320)
-    Frame(frame,width=202,height=2,bg='black').place(x=320,y=347)
-    
-    Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
-    ARP_entry = Entry(frame, width=25, state = "readonly", readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
-    ARP_entry.pack()
-    ARP_entry.place(x=320,y=370)
+
+    LabelsTemplate(frame)
+    ModesTemplate("VVI", frame)
 
     def applychanges():
         LRL_value = LRL_entry.get()
