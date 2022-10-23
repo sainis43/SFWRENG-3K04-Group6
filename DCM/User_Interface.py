@@ -162,6 +162,8 @@ def AOO():
         ARP_value = ARP_entry.get()
 
 
+        #if(LRL_value == "" or URL_value == "" or AA_value == "" or LRL_value == "" or LRL_value == "" or 
+
     #LRL
         if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
             if(int(LRL_value) % 5 != 0):
@@ -172,10 +174,11 @@ def AOO():
             
 
     #URL
-        if(int(URL_value) > 50 or int(URL_value) < 175):
+        if(int(URL_value) > 50 and int(LRL_value) < 175):
+            if(int(URL_value) % 5 != 0):
+                Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
+        else:
             Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-        elif(int(URL_value) % 5 != 0):
-            Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
     #AA which amplitude is regulated but having trouble same as LRL
 
