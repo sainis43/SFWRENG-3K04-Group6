@@ -209,7 +209,7 @@ def AOO():
 
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=20, y=100)
+            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
         else:
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -279,7 +279,7 @@ def VOO():
         ARP_value = ARP_entry.get()
 
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=20, y=100)
+            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
         else:
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -346,8 +346,8 @@ def AAI():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
-        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=20, y=100)
+        if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == "" or ARP_value == ""):
+            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -420,8 +420,8 @@ def VVI():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
-        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=20, y=100)
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
