@@ -164,7 +164,7 @@ def AOO():
 
         #if(LRL_value == "" or URL_value == "" or AA_value == "" or LRL_value == "" or LRL_value == "" or 
 
-    #LRL
+    #LRL##################################################################################################################################################
         if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
             if(int(LRL_value) % 5 != 0):
                 Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
@@ -173,40 +173,26 @@ def AOO():
                 Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
             
 
-    #URL
+    #URL##################################################################################################################################################
         if(int(URL_value) > 50 and int(LRL_value) < 175):
             if(int(URL_value) % 5 != 0):
                 Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
         else:
             Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
-    #AA which amplitude is regulated but having trouble same as LRL
-
-
-    #APW
-        if(int(APW_value) != 0.05 or int(APW_value) > 0.1 or int(APW_value) < 1.9):
-            Label(frame, text = "Must be 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-
-    #VA which amplitude is regulated but having trouble same as LRL
-
-
-    #VPW
-        if(int(VPW_value) != 0.05 or int(VPW_value) > 0.1 or int(VPW_value) < 1.9):
-            Label(frame, text = "Must be 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=270)
-        
-    #VRP
-        if(int(VRP_value) > 150 or int(VRP_value) < 500):
-            Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
-        elif(int(VRP_value) % 10 != 0):
-            Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
-    #ARP
-        if(int(ARP_value) > 150 or int(ARP_value) < 500):
-            Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
-        elif(int(ARP_value) % 10 != 0):
-            Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
+    #AA###################################################################################################################################################
         
 
 
+    #APW##################################################################################################################################################
+        if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9):
+            if(int(float(APW_value) % 0.1) != 0):
+                Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
+        else:
+            if(float(APW_value) != 0.05):
+                Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
+            
+    ######################################################################################################################################################
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=165, y=450)
     
