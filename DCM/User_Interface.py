@@ -383,12 +383,12 @@ def AAI():
         if(int(APW_value) != 0.05 or int(APW_value) > 0.1 or int(APW_value) < 1.9):
             Label(frame, text = "Must be 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
         
-    #ARP
-        if(int(ARP_value) > 150 or int(ARP_value) < 500):
+     #ARP
+        if(int(ARP_value) < 150 or int(ARP_value) > 500):
             Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
         elif(int(ARP_value) % 10 != 0):
             Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
-
+            
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=165, y=450)
 
     
@@ -485,7 +485,7 @@ def VVI():
             Label(frame, text = "Must be 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=270)
         
     #VRP
-        if(int(VRP_value) > 150 or int(VRP_value) < 500):
+        if(int(VRP_value) < 150 or int(VRP_value) > 500):
             Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
         elif(int(VRP_value) % 10 != 0):
             Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
