@@ -4,10 +4,6 @@ from tkinter import ttk
 import os
     
 def session():
-#    global dashboard_screen
-#    dashboard_screen = Toplevel(root)
-#    dashboard_screen.title("Pacemaker Dashboard")
-#    dashboard_screen.geometry("925x600")
 
     root.geometry('925x600')
     root.configure(bg='white')
@@ -19,7 +15,7 @@ def session():
 
     frame2 = Frame(root,width=400, height= 400, bg='white')
     frame2.place(x=50,y=80)
-
+    
     options = ["AOO",
                "VOO",
                "AAI",
@@ -38,6 +34,7 @@ def session():
     menu.current(0)
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
+    
 
 def AOO():
     Label(root, text = "Lower Rate Limit",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
@@ -86,21 +83,24 @@ def VVI():
     Label(root, text = "VVI Mode",bg = "white", fg = "black", font = ("calibri", 14)).place(x=200,y=20)
 
 def incorrect_password():
-    Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=335)
+    Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ("calibri", 11)).place(x=595, y=315)
     
 def unknown_user():
-    Label(root, text = "Unknown User            ", fg = "red", bg='white', font = ("calibri", 11)).place(x=605, y=335)
+    Label(root, text = "Unknown User", padx = 40, fg = "red", bg='white', font = ("calibri", 11)).place(x=565, y=315)
 
 def register_user():
     global numUsers
 
     inp1 = username_entry.get()
     inp2 = password_entry.get()
+    inp3 = serial_entry.get()
 
-    if(inp1 == "Username"):
-        Label(root, text = "Username Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=405)
-    elif(inp2 == "Password"):
-        Label(root, text = "Password Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=585, y=405)
+    if(inp1 == "Username" or inp1 == ""):
+        Label(root, text = "Username Field Empty", padx = 40, fg = "red", bg='white',font = ("calibri", 11)).place(x=545, y=365)
+    elif(inp2 == "Password" or inp2 == ""):
+        Label(root, text = "Password Field Empty", padx = 40, fg = "red", bg='white',font = ("calibri", 11)).place(x=545, y=365)
+    elif(inp3 == "Serial Number" or inp3 == ""):
+        Label(root, text = "Serial Number Field Empty", fg = "red", bg='white',font = ("calibri", 11)).place(x=568, y=365)
     else:
         f = open("users.txt","r")
         numUsers = int(f.readline())
@@ -113,18 +113,21 @@ def register_user():
         if (numUsers <= 10):
             username_info = user.get()
             password_info = password.get()
+            serial_info = serial.get()
 
             file = open(username_info, "w")
             file.write(username_info + "\n")
-            file.write(password_info)
+            file.write(password_info + "\n")
+            file.write(serial_info)
             file.close()
 
             username_entry.delete(0, END)
             password_entry.delete(0, END)
+            serial_entry.delete(0, END)
 
-            Label(root, text = "Registration Successful", fg = "green", bg='white',font = ("calibri", 11)).place(x=585, y=405)
+            Label(root, text = "Registration Successful", padx = 40, fg = "green", bg='white',font = ("calibri", 11)).place(x=540, y=365)
         else:
-            Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=405)
+            Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ("calibri", 11)).place(x=540, y=365)
 
 def login_verify():
     username1 = username_verify.get()
@@ -156,12 +159,12 @@ def register():
     root.title('Pacemaker Registration Screen')
 
     frame = Frame(root,width=350, height= 450, bg='white')
-    frame.place(x=480,y=70)
+    frame.place(x=480,y=50)
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
 
     heading = Label(frame,text = 'Register', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
-    heading.place(x=110,y=25)
+    heading.place(x=110,y=5)
 
     user = StringVar()
     password = StringVar()
@@ -180,12 +183,12 @@ def register():
 
     username_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = user)
     username_entry.pack()
-    username_entry.place(x=30,y=100)
+    username_entry.place(x=30,y=80)
     username_entry.insert(0,'Username')
     username_entry.bind('<FocusIn>', onClick)
     username_entry.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=288,height=2,bg='black').place(x=30,y=127)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=107)
 
     ###
 
@@ -199,12 +202,12 @@ def register():
             
     password_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password)
     password_entry.pack()
-    password_entry.place(x=30,y=170)
+    password_entry.place(x=30,y=150)
     password_entry.insert(0,'Password')
     password_entry.bind('<FocusIn>', onClick)
     password_entry.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=288,height=2,bg='black').place(x=30,y=197)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=177)
 
     ###
 
@@ -218,21 +221,21 @@ def register():
             
     serial_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = serial)
     serial_entry.pack()
-    serial_entry.place(x=30,y=240)
+    serial_entry.place(x=30,y=220)
     serial_entry.insert(0,'Serial Number')
     serial_entry.bind('<FocusIn>', onClick)
     serial_entry.bind('<FocusOut>', onUnClick)
 
-    Frame(frame,width=288,height=2,bg='black').place(x=30,y=267)
+    Frame(frame,width=288,height=2,bg='black').place(x=30,y=247)
 
     ###
 
     
-    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=294)
+    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=274)
     label=Label(frame, text="Already have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
-    label.place(x=80, y=360)
+    label.place(x=80, y=340)
     sign_up= Button(frame, width=6, text='Sign in', border=0, bg='white', cursor='hand2', fg='#983cc8', command = main_screen)
-    sign_up.place(x=225, y=360)
+    sign_up.place(x=225, y=340)
     
     root.mainloop()
     
@@ -250,7 +253,7 @@ def main_screen():
     Label(root, image = img, bg = 'white').place(x=50,y=80)
 
     frame = Frame(root,width=350, height= 450, bg='white')
-    frame.place(x=480,y=70)
+    frame.place(x=480,y=50)
 
     heading = Label(frame,text = 'Sign in', fg = '#983cc8', bg='white', font=('Microsoft YaHei UI Light',23, 'bold'))
     heading.place(x=115,y=25)
