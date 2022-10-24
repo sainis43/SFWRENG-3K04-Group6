@@ -9,8 +9,8 @@ import linecache
 #If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
 #If the pacemaker serial number matches the one on file, then it goes to the next frame called "session()", this frame unlocks the ability to select modes and edit parameters
 def serialsession():
-    global LRL, URL, AA, APW, VA, VPW, VRP, ARP
-    root.geometry('925x600')
+    global LRL, URL, AA, APW, VA, VPW, VRP, ARP #all the parameters
+    root.geometry('925x600') #session screen settings
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
@@ -18,12 +18,12 @@ def serialsession():
     frame = Frame(root,width=925, height= 600, bg='white')
     frame.place(x=0,y=0)
     
-    options = ["OFF",
+    options = ["OFF", #differnet mode types
                "AOO",
                "VOO",
                "AAI",
                "VVI"]
-    def optionselected(event):
+    def optionselected(event): 
         if(menu.get() == "OFF"):
             OFF()
         elif(menu.get() == "AOO"):
@@ -35,7 +35,7 @@ def serialsession():
         elif(menu.get() == "VVI"):
             VVI()
             
-    menu = ttk.Combobox(root, value=options, state = "disabled")
+    menu = ttk.Combobox(root, value=options, state = "disabled") #the dropdown box for modes
     menu.current(0)
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
@@ -145,7 +145,7 @@ def ModesTemplate(mode, frame):
     VRPtextboxState = "readonly"
     ARPtextboxState = "readonly"
         
-    if(mode == "AOO"):
+    if(mode == "AOO"): #all the modes with there certain parameters with each having editable boxes and readonly boxes
         LRLtextboxState = "normal"
         URLtextboxState = "normal"
         AAtextboxState = "normal"
@@ -187,7 +187,8 @@ def ModesTemplate(mode, frame):
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=347)
     else:
         mode = "OFF"
-        
+
+    #CSS
     LRL_entry = Entry(frame, width=25, state = LRLtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
     LRL_entry.pack()
     LRL_entry.place(x=320,y=20)
@@ -255,7 +256,7 @@ def AOO():
     LabelsTemplate(frame)
     ModesTemplate("AOO", frame)
     
-    def applychanges():
+    def applychanges(): #setting up the confitions for the parameteres
         Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
@@ -267,41 +268,41 @@ def AOO():
         ARP_value = ARP_entry.get()
 
 
-        if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""):
+        if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
-        else:
+        else: #goes through the conditions of the parameters 
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-                if(int(LRL_value) % 5 != 0):
+                if(int(LRL_value) % 5 != 0): #multiple of 5
                     Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            else:
+            else: #makes sure is between 50-90
                 if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
                     Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
                 
 
             #URL##################################################################################################################################################
-            if(int(URL_value) > 50 and int(URL_value) < 175):
-                if(int(URL_value) % 5 != 0):
+            if(int(URL_value) > 50 and int(URL_value) < 175): #makes sure is bwetween 50-175
+                if(int(URL_value) % 5 != 0): #mulitple of 5
                     Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
             else:
                 Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
             #AA###################################################################################################################################################
-            if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2):
-                if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)):
+            if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2): #makes sure is between .5 and 3.2
+                if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)): #makes sure is multiple of 0.01
                     Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0):
-                if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)):
+            elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0): #makes sure is between 3.5 and 7
+                if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)): #multiple of 0.5
                     Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            else:
+            else: #allows value to be 0
                 if(float(AA_value) != 0):
                     Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
 
             #APW##################################################################################################################################################
-            if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9):
+            if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9): #makes sure value is between 0.1 and 1.9
                 if(not(float(format((float(APW_value) % 0.5), ".4f")) == 0.1 or float(format((float(APW_value) % 0.1), ".4f")) == 0)):
                     Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            else:
+            else: #makes sure value can equal 0.05
                 if(float(APW_value) != 0.05):
                     Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
 
@@ -357,7 +358,7 @@ def VOO():
                 Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
 
             #VA###################################################################################################################################################
-            if(float(VA_value) >= 0.5 and float(VA_value) <= 3.2):
+            if(float(VA_value) >= 0.5 and float(VA_value) <= 3.2): #same as AA
                 if(not(float(format((float(VA_value) % 0.1), ".4f")) == 0.1 or float(format((float(VA_value) % 0.1), ".4f")) == 0)):
                     Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=220)
             elif(float(VA_value) >= 3.5 and float(VA_value) <= 7.0):
@@ -368,7 +369,7 @@ def VOO():
                     Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=220)
 
             #VPW##################################################################################################################################################
-            if(float(VPW_value) >= 0.1 and float(VPW_value) <= 1.9):
+            if(float(VPW_value) >= 0.1 and float(VPW_value) <= 1.9): #same as APW
                 if(not(float(format((float(VPW_value) % 0.5), ".4f")) == 0.1 or float(format((float(VPW_value) % 0.1), ".4f")) == 0)):
                     Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=270)
             else:
@@ -444,9 +445,9 @@ def AAI():
                     Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
             
          #ARP##################################################################################################################################################
-            if(int(ARP_value) < 150 or int(ARP_value) > 500):
+            if(int(ARP_value) < 150 or int(ARP_value) > 500): #makes sure value is between 150 - 500
                 Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
-            elif(int(ARP_value) % 10 != 0):
+            elif(int(ARP_value) % 10 != 0): #makes sure value is multiple of 10
                 Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
             
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
@@ -535,14 +536,14 @@ def register_user():
     inp2 = password_entry.get()
     inp3 = serial_entry.get()
 
-    if(inp1 == "Username" or inp1 == ""):
+    if(inp1 == "Username" or inp1 == ""): #makes sure input1,2,3 have something in them
         Label(root, text = "Username Field Empty", padx = 40, fg = "red", bg='white',font = ('Microsoft YaHei UI Light', 11)).place(x=545, y=365)
     elif(inp2 == "Password" or inp2 == ""):
         Label(root, text = "Password Field Empty", padx = 40, fg = "red", bg='white',font = ('Microsoft YaHei UI Light', 11)).place(x=545, y=365)
     elif(inp3 == "Serial Number" or inp3 == ""):
         Label(root, text = "Serial Number Field Empty", fg = "red", bg='white',font = ('Microsoft YaHei UI Light', 11)).place(x=568, y=365)
     else:
-        f = open("users.txt","r")
+        f = open("users.txt","r") #opens file and overwrites the user counter
         numUsers = int(f.readline())
         f.close()
         
@@ -551,12 +552,12 @@ def register_user():
         f.write(str(numUsers))
         f.close()
         
-        if (numUsers <= 10):
+        if (numUsers <= 10):  #set a limit of 10 users
             username_info = user.get()
             password_info = password.get()
             serial_info = serial.get()
 
-            file = open(username_info, "w")
+            file = open(username_info, "w") #writes all the info inside file (username, password, and serial number)
             file.write(username_info + "\n")
             file.write(password_info + "\n")
             file.write(serial_info)
@@ -579,11 +580,11 @@ def login_verify():
     user.delete(0, END)
     password.delete(0, END)
 
-    list_of_files = os.listdir()
+    list_of_files = os.listdir() #checks if username is in list of files where python file is and reads the file to check password verifcation
     if username1 in list_of_files:
        file1 = open(username1, "r")
        content = linecache.getline(username1, 2)
-       if (password1 == content.strip()):
+       if (password1 == content.strip()): #confirms password inorder to open dashboard
            serialsession()
        else:
            Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ('Microsoft YaHei UI Light', 11)).place(x=595, y=315)
@@ -604,7 +605,7 @@ def register():
     
     root.title('Pacemaker Registration Screen')
 
-    frame = Frame(root,width=350, height= 450, bg='white')
+    frame = Frame(root,width=350, height= 450, bg='white') 
     frame.place(x=480,y=50)
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
@@ -627,7 +628,7 @@ def register():
             username_entry.insert(0, 'Username')
 
 
-    username_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = user)
+    username_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = user) #input of username
     username_entry.pack()
     username_entry.place(x=30,y=80)
     username_entry.insert(0,'Username')
@@ -646,7 +647,7 @@ def register():
         if name == '':
             password_entry.insert(0, 'Password')
             
-    password_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password)
+    password_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password) #input of password
     password_entry.pack()
     password_entry.place(x=30,y=150)
     password_entry.insert(0,'Password')
@@ -665,7 +666,7 @@ def register():
         if name == '':
             serial_entry.insert(0, 'Serial Number')
             
-    serial_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = serial)
+    serial_entry = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = serial) #input of serial number
     serial_entry.pack()
     serial_entry.place(x=30,y=220)
     serial_entry.insert(0,'Serial Number')
@@ -677,7 +678,7 @@ def register():
     ###
 
     
-    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=274)
+    Button(frame, width=39, pady=7, text='Register', bg='#983cc8', fg='white', border=0, command = register_user).place(x=35, y=274) #button to register
     label=Label(frame, text="Already have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
     label.place(x=80, y=340)
     sign_up= Button(frame, width=6, text='Sign in', border=0, bg='white', cursor='hand2', fg='#983cc8', command = main_screen)
@@ -694,7 +695,7 @@ def main_screen():
     global user
     global password
 
-    root.title('Pacemaker Login Screen')
+    root.title('Pacemaker Login Screen') #development of the main screen
 
     img = PhotoImage(file = 'login.png')
     Label(root, image = img, bg = 'white').place(x=50,y=80)
@@ -719,7 +720,7 @@ def main_screen():
             user.insert(0, 'Username')
 
 
-    user = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = username_verify)
+    user = Entry(frame, width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = username_verify) #input for login username
     user.pack()
     user.place(x=30,y=100)
     user.insert(0,'Username')
@@ -738,7 +739,7 @@ def main_screen():
         if name == '':
             password.insert(0, 'Password')
             
-    password = Entry(frame, show="*", width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password_verify)
+    password = Entry(frame, show="*", width=25, fg='black', border=0, bg="white", font=('Microsoft YaHei UI Light',11), textvariable = password_verify) #input for login password
     password.pack()
     password.place(x=30,y=170)
     password.insert(0,'Password')
@@ -749,7 +750,7 @@ def main_screen():
 
 
     ###
-    Button(frame, width=39, pady=7, text='Sign in', bg='#983cc8', fg='white', border=0, command = lambda:[login_verify()]).place(x=35, y=224)
+    Button(frame, width=39, pady=7, text='Sign in', bg='#983cc8', fg='white', border=0, command = lambda:[login_verify()]).place(x=35, y=224) #login button
     label=Label(frame, text="Don't have an account?", fg='black', bg='white', font=('Microsoft YaHei UI Light',9))
     label.place(x=75, y=290)
     sign_up= Button(frame, width=6, text='Sign up', border=0, bg='white', cursor='hand2', fg='#983cc8', command = register)
