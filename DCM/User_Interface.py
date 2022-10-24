@@ -1,16 +1,73 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from math import log10, floor
 import os
-    
-def session():
+import linecache
 
+
+#This whole function is the first frame the program goes to after login. It asks for the user's pacemaker serial number to verify that the same pacemaker is being used
+#If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
+#If the pacemaker serial number matches the one on file, then it goes to the next frame called "session()", this frame unlocks the ability to select modes and edit parameters
+def serialsession():
     global LRL, URL, AA, APW, VA, VPW, VRP, ARP
     root.geometry('925x600')
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
+
+    frame = Frame(root,width=925, height= 600, bg='white')
+    frame.place(x=0,y=0)
+    
+    options = ["OFF",
+               "AOO",
+               "VOO",
+               "AAI",
+               "VVI"]
+    def optionselected(event):
+        if(menu.get() == "OFF"):
+            OFF()
+        elif(menu.get() == "AOO"):
+            AOO()
+        elif(menu.get() == "VOO"):
+            VOO()
+        elif(menu.get() == "AAI"):
+            AAI()
+        elif(menu.get() == "VVI"):
+            VVI()
+            
+    menu = ttk.Combobox(root, value=options, state = "disabled")
+    menu.current(0)
+    menu.bind("<<ComboboxSelected>>", optionselected)
+    menu.pack()
+
+    def connected():
+        serial1 = serial_verify.get()
+
+        list_of_files = os.listdir()
+        if username1 in list_of_files:
+            file1 = open(username1, "r")
+            content = linecache.getline(username1, 3)
+            if (serial1 == content.strip()):
+                session()
+                Label(root, text = "Pacemaker Connected", bg = "white", fg = "green", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
+            else:
+                Label(root, text = "This pacemaker does not match the one previously used. \n Please create a new account if you are using a different pacemaker", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=175,y=250)
+
+    serial_verify = StringVar()
+    Label(frame, text = "Pacemaker Disconnected", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
+    Label(frame, text = "Enter Pacemaker Serial Number", bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=332,y=80)
+    SerialNumberCheck = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = serial_verify)
+    SerialNumberCheck.pack()
+    SerialNumberCheck.place(x=370, y = 110)
+
+    Button(root, width=30, height=1, pady=7, text='Connect', bg='#983cc8', fg='white', border=0, command = connected).place(x=362, y=140)
+
+
+#This is the session mode, this frame unlocks the ability to select modes and edit parameters
+#Templates are used to set up all labels and entry fields
+#Based on the dropdown that the user selects, the program will change its frame to the corresponding mode
+#The default mode is OFF
+def session():
 
     frame = Frame(root,width=925, height= 600, bg='white')
     frame.place(x=0,y=0)
@@ -38,6 +95,7 @@ def session():
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
 
+#This is a template to display all parameter labels
 def LabelsTemplate(frame):
     
     Label(frame, text = "Lower Rate Limit (ppm)", bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=20)
@@ -48,8 +106,8 @@ def LabelsTemplate(frame):
     Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
     Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
     Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
-    Label(root, text = "Pacemaker Disconnected", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=500,y=550)
 
+#This is a template to display all entry fields and it also sets the variables
 def ModesTemplate(mode, frame):
 
     global LRL 
@@ -161,7 +219,8 @@ def ModesTemplate(mode, frame):
     ARP_entry = Entry(frame, width=25, state = ARPtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
     ARP_entry.pack()
     ARP_entry.place(x=320,y=370)
-    
+
+#This is the OFF mode
 def OFF():
     LRL = StringVar()
     URL = StringVar()
@@ -178,7 +237,7 @@ def OFF():
     LabelsTemplate(frame)
     ModesTemplate("OFF", frame)
     
-
+#This is the AOO mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
 def AOO():
 
     LRL = StringVar()
@@ -209,7 +268,7 @@ def AOO():
 
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
         else:
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -250,7 +309,7 @@ def AOO():
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
-
+#This is the VOO mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
 def VOO():
     LRL = StringVar()
     URL = StringVar()
@@ -279,7 +338,7 @@ def VOO():
         ARP_value = ARP_entry.get()
 
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
         else:
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -318,7 +377,7 @@ def VOO():
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
-    
+#This is the AAI mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error 
 def AAI():
     LRL = StringVar()
     URL = StringVar()
@@ -347,7 +406,7 @@ def AAI():
         ARP_value = ARP_entry.get()
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == "" or ARP_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -392,7 +451,7 @@ def AAI():
             
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
-    
+#This is the VVI mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
 def VVI():
     LRL = StringVar()
     URL = StringVar()
@@ -421,7 +480,7 @@ def VVI():
         ARP_value = ARP_entry.get()
 
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
-            Label(frame, text = "Fill in the Boxes", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=420)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -466,9 +525,12 @@ def VVI():
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
+#This function is called when a user clicks the register button
+#It takes all entry fields (username, password, and serial number) and stores them in a new file
+#Error messages and success messages are also included in this function
 def register_user():
     global numUsers
-
+    
     inp1 = username_entry.get()
     inp2 = password_entry.get()
     inp3 = serial_entry.get()
@@ -487,7 +549,8 @@ def register_user():
         f = open("users.txt", "w")
         numUsers += 1
         f.write(str(numUsers))
-
+        f.close()
+        
         if (numUsers <= 10):
             username_info = user.get()
             password_info = password.get()
@@ -507,7 +570,10 @@ def register_user():
         else:
             Label(root, text = "Maximum Amount of Users Reached", fg = "red", bg='white',font = ('Microsoft YaHei UI Light', 11)).place(x=540, y=365)
 
+#This function is called after the user clicks the login button
+#It checks if the username is on file, if yes, it goes to that file and checks line 2 for the password, if the password matches, it sends the program to the serialsession() frame, if not, it shows an error
 def login_verify():
+    global username1
     username1 = username_verify.get()
     password1 = password_verify.get()
     user.delete(0, END)
@@ -516,14 +582,16 @@ def login_verify():
     list_of_files = os.listdir()
     if username1 in list_of_files:
        file1 = open(username1, "r")
-       verify = file1.read().splitlines()
-       if password1 in verify:
-           session()
+       content = linecache.getline(username1, 2)
+       if (password1 == content.strip()):
+           serialsession()
        else:
            Label(root, text = "Incorrect Password",bg='white', fg = "red", font = ('Microsoft YaHei UI Light', 11)).place(x=595, y=315)
     else:
         Label(root, text = "Unknown User", padx = 40, fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=565, y=315)
 
+#This function is the register frame. This is brought forward when a user clicks the sign up button
+#It includes entry fields and a register button. If all is well in their registration, it sends them to the register_user() function
 def register():
 
     global root
@@ -617,7 +685,8 @@ def register():
     
     root.mainloop()
     
-
+#This is the main login screen
+#It holds entry fields for username and password, and a login button. The login button will either prompt an error message (if password/user is wrong) or it will send them to the login_verify() function
 def main_screen():
     global root
     global username_verify
@@ -688,6 +757,8 @@ def main_screen():
 
     root.mainloop()
 
+#This is the setup for the window
+#It includes the size, and makes it not resizeable
 root = Tk()
 root.geometry('925x500+300+200')
 root.configure(bg='white')
