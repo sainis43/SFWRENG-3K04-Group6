@@ -267,9 +267,10 @@ def AOO():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
+        print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value)
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         else: #goes through the conditions of the parameters 
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -338,8 +339,10 @@ def VOO():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value)
+        
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         else:
             #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -406,8 +409,10 @@ def AAI():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
+        print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value + " " + ARP_value)
+        
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == "" or ARP_value == ""):
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
@@ -480,8 +485,10 @@ def VVI():
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
 
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=60, y=415)
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         else:
         #LRL##################################################################################################################################################
             if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
