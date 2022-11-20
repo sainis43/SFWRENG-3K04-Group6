@@ -22,7 +22,11 @@ def serialsession():
                "AOO",
                "VOO",
                "AAI",
-               "VVI"]
+               "VVI",
+               "AOOR",
+               "VOOR",
+               "AAIR",
+               "VVIR"]
     def optionselected(event): 
         if(menu.get() == "OFF"):
             OFF()
@@ -34,6 +38,14 @@ def serialsession():
             AAI()
         elif(menu.get() == "VVI"):
             VVI()
+        elif(menu.get() == "AOOR"):
+            AOOR()
+        elif(menu.get() == "VOOR"):
+            VOOR()
+        elif(menu.get() == "AAIR"):
+            AAIR()
+        elif(menu.get() == "VVIR"):
+            VVIR()
             
     menu = ttk.Combobox(root, value=options, state = "disabled") #the dropdown box for modes
     menu.current(0)
@@ -73,12 +85,16 @@ def session():
     frame.place(x=0,y=0)
     OFF()
     
-    options = ["OFF",
+    options = ["OFF", #differnet mode types
                "AOO",
                "VOO",
                "AAI",
-               "VVI"]
-    def optionselected(event):
+               "VVI",
+               "AOOR",
+               "VOOR",
+               "AAIR",
+               "VVIR"]
+    def optionselected(event): 
         if(menu.get() == "OFF"):
             OFF()
         elif(menu.get() == "AOO"):
@@ -89,6 +105,14 @@ def session():
             AAI()
         elif(menu.get() == "VVI"):
             VVI()
+        elif(menu.get() == "AOOR"):
+            AOOR()
+        elif(menu.get() == "VOOR"):
+            VOOR()
+        elif(menu.get() == "AAIR"):
+            AAIR()
+        elif(menu.get() == "VVIR"):
+            VVIR()
             
     menu = ttk.Combobox(root, value=options, state = "readonly")
     menu.current(0)
@@ -185,6 +209,50 @@ def ModesTemplate(mode, frame):
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=347)
+    elif(mode == "AOOR"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        ARPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+    elif(mode == "VOOR"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        ARPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+    elif(mode == "AAIR"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        ARPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+    elif(mode == "VVIR"):
+        LRLtextboxState = "normal"
+        URLtextboxState = "normal"
+        AAtextboxState = "normal"
+        APWtextboxState = "normal"
+        ARPtextboxState = "normal"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
     else:
         mode = "OFF"
 
@@ -533,6 +601,70 @@ def VVI():
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
+def AOOR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    
+    frame = Frame(root,width=875, height= 500, bg='white')
+    frame.place(x=20,y=80)
+
+    LabelsTemplate(frame)
+    ModesTemplate("AOOR", frame)
+
+def VOOR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    
+    frame = Frame(root,width=875, height= 500, bg='white')
+    frame.place(x=20,y=80)
+
+    LabelsTemplate(frame)
+    ModesTemplate("VOOR", frame)
+
+def AAIR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    
+    frame = Frame(root,width=875, height= 500, bg='white')
+    frame.place(x=20,y=80)
+
+    LabelsTemplate(frame)
+    ModesTemplate("AAIR", frame)
+
+def VVIR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    
+    frame = Frame(root,width=875, height= 500, bg='white')
+    frame.place(x=20,y=80)
+
+    LabelsTemplate(frame)
+    ModesTemplate("VVIR", frame)
+    
 #This function is called when a user clicks the register button
 #It takes all entry fields (username, password, and serial number) and stores them in a new file
 #Error messages and success messages are also included in this function
