@@ -9,7 +9,7 @@ import linecache
 #If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
 #If the pacemaker serial number matches the one on file, then it goes to the next frame called "session()", this frame unlocks the ability to select modes and edit parameters
 def serialsession():
-    root.geometry('925x1000') #session screen settings
+    root.geometry('1250x600') #session screen settings
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
@@ -162,8 +162,16 @@ def ModesTemplate(mode, frame):
     global VRP_entry  
     global ARP_entry 
     
-    #LRL = StringVar()
-    LRL = (30, 35, 40, 45, 50, 
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+
+    LRL_values = (30, 35, 40, 45, 50, 
            51, 52, 53, 54, 55, 
            56, 57, 58, 59, 60, 
            61, 62, 63, 64, 65, 
@@ -176,22 +184,15 @@ def ModesTemplate(mode, frame):
           120, 125, 130, 135, 140, 
           145, 150, 155, 160, 165, 
           170, 175) 
-    URL = StringVar()
-    AA = StringVar()
-    APW = StringVar()
-    VA = StringVar()
-    VPW = StringVar()
-    VRP = StringVar()
-    ARP = StringVar()
     
-    LRLtextboxState = "readonly"
-    URLtextboxState = "readonly"
-    AAtextboxState = "readonly"
-    APWtextboxState = "readonly"
-    VAtextboxState = "readonly"
-    VPWtextboxState = "readonly"
-    VRPtextboxState = "readonly"
-    ARPtextboxState = "readonly"
+    LRLtextboxState = "disabled"
+    URLtextboxState = "disabled"
+    AAtextboxState = "disabled"
+    APWtextboxState = "disabled"
+    VAtextboxState = "disabled"
+    VPWtextboxState = "disabled"
+    VRPtextboxState = "disabled"
+    ARPtextboxState = "disabled"
         
     if(mode == "AOO"): #all the modes with there certain parameters with each having editable boxes and readonly boxes
         LRLtextboxState = "normal"
@@ -281,7 +282,7 @@ def ModesTemplate(mode, frame):
         mode = "OFF"
 
     #CSS
-    LRL_entry = Spinbox(frame, values = LRL, state = LRLtextboxState, font = ("Helvetica", 15))
+    LRL_entry = Spinbox(frame, textvariable = LRL, values = LRL_values, state = LRLtextboxState, font = ("Helvetica", 15))
     LRL_entry.pack()
     LRL_entry.place(x=320,y=20)
     
@@ -363,15 +364,6 @@ def AOO():
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         else: #goes through the conditions of the parameters 
-            #LRL##################################################################################################################################################
-            if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-                if(int(LRL_value) % 5 != 0): #multiple of 5
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            else: #makes sure is between 50-90
-                if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
-                    Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-                
-
             #URL##################################################################################################################################################
             if(int(URL_value) > 50 and int(URL_value) < 175): #makes sure is bwetween 50-175
                 if(int(URL_value) % 5 != 0): #mulitple of 5
