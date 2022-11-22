@@ -326,7 +326,6 @@ def ModesTemplate(mode, frame):
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=395)
         Frame(frame,width=202,height=2,bg='black').place(x=920,y=95)
         Frame(frame,width=202,height=2,bg='black').place(x=920,y=195)
-
     elif(mode == "VOO"):
         LRLtextboxState = "readonly"
         URLtextboxState = "readonly"
@@ -348,50 +347,93 @@ def ModesTemplate(mode, frame):
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=245)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=295)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=145)
     elif(mode == "AOOR"):
         LRLtextboxState = "readonly"
         URLtextboxState = "readonly"
+        MSRtextboxState = "readonly"
         AAtextboxState = "readonly"
         APWtextboxState = "readonly"
-        ARPtextboxState = "readonly"
+        ATtextboxState = "readonly"
+        RnTtextboxState = "readonly"
+        RFtextboxState = "readonly"
+        RyTtextboxState = "readonly"
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=45)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=145)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=195)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=395)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=395)
     elif(mode == "VOOR"):
         LRLtextboxState = "readonly"
         URLtextboxState = "readonly"
-        AAtextboxState = "readonly"
-        APWtextboxState = "readonly"
-        ARPtextboxState = "readonly"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+        MSRtextboxState = "readonly"
+        VAtextboxState = "readonly"
+        VPWtextboxState = "readonly"
+        ATtextboxState = "readonly"
+        RnTtextboxState = "readonly"
+        RFtextboxState = "readonly"
+        RyTtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=395)
     elif(mode == "AAIR"):
         LRLtextboxState = "readonly"
         URLtextboxState = "readonly"
+        MSRtextboxState = "readonly"
         AAtextboxState = "readonly"
         APWtextboxState = "readonly"
+        AStextboxState = "readonly"
         ARPtextboxState = "readonly"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+        PVARPtextboxState = "readonly"
+        ATtextboxState = "readonly"
+        RnTtextboxState = "readonly"
+        RFtextboxState = "readonly"
+        RyTtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=145)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=195)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=395)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=195)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=395)
     elif(mode == "VVIR"):
         LRLtextboxState = "readonly"
         URLtextboxState = "readonly"
-        AAtextboxState = "readonly"
-        APWtextboxState = "readonly"
-        ARPtextboxState = "readonly"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+        MSRtextboxState = "readonly"
+        VAtextboxState = "readonly"
+        VPWtextboxState = "readonly"
+        VStextboxState = "readonly"
+        VRPtextboxState = "readonly"
+        ATtextboxState = "readonly"
+        RnTtextboxState = "readonly"
+        RFtextboxState = "readonly"
+        RyTtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=45)  
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=145)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=345)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=395)
     else:
         mode = "OFF"
 
@@ -496,6 +538,15 @@ def AOO():
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
 
     frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
@@ -531,6 +582,15 @@ def VOO():
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
 
     frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
@@ -611,12 +671,233 @@ def VVI():
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
 
     frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
     
     LabelsTemplate(frame)
     ModesTemplate("VVI", frame)
+
+    def applychanges():
+        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        LRL_value = LRL_entry.get()
+        URL_value = URL_entry.get()
+        AA_value = AA_entry.get()
+        APW_value = APW_entry.get()
+        VA_value = VA_entry.get()
+        VPW_value = VPW_entry.get()
+        VRP_value = VRP_entry.get()
+        ARP_value = ARP_entry.get()
+
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+
+def VVI():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
+
+    frame = Frame(root,width=1250, height= 600, bg='white')
+    frame.place(x=20,y=80)
+    
+    LabelsTemplate(frame)
+    ModesTemplate("VVI", frame)
+
+    def applychanges():
+        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        LRL_value = LRL_entry.get()
+        URL_value = URL_entry.get()
+        AA_value = AA_entry.get()
+        APW_value = APW_entry.get()
+        VA_value = VA_entry.get()
+        VPW_value = VPW_entry.get()
+        VRP_value = VRP_entry.get()
+        ARP_value = ARP_entry.get()
+
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+def AOOR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
+
+    frame = Frame(root,width=1250, height= 600, bg='white')
+    frame.place(x=20,y=80)
+    
+    LabelsTemplate(frame)
+    ModesTemplate("AOOR", frame)
+
+    def applychanges():
+        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        LRL_value = LRL_entry.get()
+        URL_value = URL_entry.get()
+        AA_value = AA_entry.get()
+        APW_value = APW_entry.get()
+        VA_value = VA_entry.get()
+        VPW_value = VPW_entry.get()
+        VRP_value = VRP_entry.get()
+        ARP_value = ARP_entry.get()
+
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+def AAIR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
+
+    frame = Frame(root,width=1250, height= 600, bg='white')
+    frame.place(x=20,y=80)
+    
+    LabelsTemplate(frame)
+    ModesTemplate("AAIR", frame)
+
+    def applychanges():
+        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        LRL_value = LRL_entry.get()
+        URL_value = URL_entry.get()
+        AA_value = AA_entry.get()
+        APW_value = APW_entry.get()
+        VA_value = VA_entry.get()
+        VPW_value = VPW_entry.get()
+        VRP_value = VRP_entry.get()
+        ARP_value = ARP_entry.get()
+
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+def VOOR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
+
+    frame = Frame(root,width=1250, height= 600, bg='white')
+    frame.place(x=20,y=80)
+    
+    LabelsTemplate(frame)
+    ModesTemplate("VOOR", frame)
+
+    def applychanges():
+        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        LRL_value = LRL_entry.get()
+        URL_value = URL_entry.get()
+        AA_value = AA_entry.get()
+        APW_value = APW_entry.get()
+        VA_value = VA_entry.get()
+        VPW_value = VPW_entry.get()
+        VRP_value = VRP_entry.get()
+        ARP_value = ARP_entry.get()
+
+        print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
+        
+        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
+            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+
+    Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+    
+def VVIR():
+    LRL = StringVar()
+    URL = StringVar()
+    AA = StringVar()
+    APW = StringVar()
+    VA = StringVar()
+    VPW = StringVar()
+    VRP = StringVar()
+    ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
+    
+
+    frame = Frame(root,width=1250, height= 600, bg='white')
+    frame.place(x=20,y=80)
+    
+    LabelsTemplate(frame)
+    ModesTemplate("VVIR", frame)
 
     def applychanges():
         Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
