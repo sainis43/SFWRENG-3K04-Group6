@@ -555,7 +555,7 @@ def AOO():
     ModesTemplate("AOO", frame)
     
     def applychanges(): #setting up the confitions for the parameteres
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='black').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -651,6 +651,14 @@ def AAI():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value + " " + ARP_value)
         
@@ -697,6 +705,14 @@ def VVI():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
@@ -740,13 +756,22 @@ def VVI():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
-
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
+        
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+    
 def AOOR():
     LRL = StringVar()
     URL = StringVar()
@@ -782,6 +807,14 @@ def AOOR():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
@@ -789,6 +822,7 @@ def AOOR():
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+    
 def AAIR():
     LRL = StringVar()
     URL = StringVar()
@@ -824,6 +858,14 @@ def AAIR():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
@@ -831,6 +873,7 @@ def AAIR():
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
+    
 def VOOR():
     LRL = StringVar()
     URL = StringVar()
@@ -866,6 +909,14 @@ def VOOR():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
@@ -909,6 +960,14 @@ def VVIR():
         VPW_value = VPW_entry.get()
         VRP_value = VRP_entry.get()
         ARP_value = ARP_entry.get()
+        MSR_value = MSR_entry.get()
+        AS_value = AS_entry.get()
+        VS_value = VS_entry.get()
+        PVARP_value = PVARP_entry.get()
+        AT_value = AT_entry.get()
+        RnT_value = RnT_entry.get()
+        RF_value = RF_entry.get()
+        RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
         
