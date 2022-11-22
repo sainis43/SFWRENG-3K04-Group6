@@ -14,7 +14,7 @@ def serialsession():
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
 
-    frame = Frame(root,width=925, height= 1000, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=0,y=0)
     
     options = ["OFF", #differnet mode types
@@ -80,7 +80,7 @@ def serialsession():
 #The default mode is OFF
 def session():
 
-    frame = Frame(root,width=925, height= 1000, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=0,y=0)
     OFF()
     
@@ -129,16 +129,15 @@ def LabelsTemplate(frame):
     Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
     Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
     Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
-    Label(frame, text = "Maximum Sensor Rate",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=420)
-    Label(frame, text = "Atrial Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=470)
-    Label(frame, text = "Ventricular Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=520)
-    Label(frame, text = "PVARP",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=570)
-    Label(frame, text = "Hysteresis",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=620)
-    Label(frame, text = "Rate Smoothing",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=670)
-    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=720)
-    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=770)
-    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=820)
-    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=870)
+    Label(frame, text = "Maximum Sensor Rate",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=20)
+    Label(frame, text = "Atrial Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=70)
+    Label(frame, text = "Ventricular Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=120)
+    Label(frame, text = "PVARP",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=170)
+    Label(frame, text = "Activity Threshold",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=220)
+    Label(frame, text = "Reaction Time",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=270)
+    Label(frame, text = "Response Factor",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=320)
+    Label(frame, text = "Recovery Time",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=660,y=370)
+
     
 
 
@@ -153,6 +152,14 @@ def ModesTemplate(mode, frame):
     global VPW 
     global VRP 
     global ARP
+    global MSR
+    global AS
+    global VS
+    global PVARP
+    global AT
+    global RnT
+    global RF
+    global RyT
     global LRL_entry 
     global URL_entry 
     global AA_entry  
@@ -160,7 +167,15 @@ def ModesTemplate(mode, frame):
     global VA_entry  
     global VPW_entry  
     global VRP_entry  
-    global ARP_entry 
+    global ARP_entry
+    global MSR_entry
+    global AS_entry
+    global VS_entry
+    global PVARP_entry
+    global AT_entry
+    global RnT_entry
+    global RF_entry
+    global RyT_entry
     
     LRL = StringVar()
     URL = StringVar()
@@ -170,21 +185,106 @@ def ModesTemplate(mode, frame):
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
 
-    LRL_values = (30, 35, 40, 45, 50, 
-           51, 52, 53, 54, 55, 
-           56, 57, 58, 59, 60, 
-           61, 62, 63, 64, 65, 
-           66, 67, 68, 69, 70, 
-           71, 72, 73, 74, 75, 
-           76, 77, 78, 79, 80, 
-           81, 82, 83, 84, 85, 
-           86, 87, 88, 89, 90, 
-           95, 100, 105, 110, 115, 
-          120, 125, 130, 135, 140, 
-          145, 150, 155, 160, 165, 
-          170, 175) 
-    
+    LRL_values = (30, 35, 40, 45, 50,
+                  51, 52, 53, 54, 55,
+                  56, 57, 58, 59, 60,
+                  61, 62, 63, 64, 65,
+                  66, 67, 68, 69, 70,
+                  71, 72, 73, 74, 75,
+                  76, 77, 78, 79, 80,
+                  81, 82, 83, 84, 85,
+                  86, 87, 88, 89, 90,
+                  95, 100, 105, 110, 115,
+                  120, 125, 130, 135, 140,
+                  145, 150, 155, 160, 165,
+                  170, 175) 
+    URL_values = (50, 55, 60, 65, 70,
+                  75, 80, 85, 90, 95, 100,
+                  105, 110, 115, 120, 125,
+                  130, 135, 140, 145, 150,
+                  155, 160, 165, 170, 175)
+    AA_values = ("off", 0.5, 0.6, 0.7, 0.8,
+                 0.9, 1, 1.1, 1.2, 1.3,
+                 1.4, 1.5, 1.6, 1.7, 1.8,
+                 1.9, 2, 2.1, 2.2, 2.3,
+                 2.4, 2.5, 2.6, 2.7, 2.8,
+                 2.9, 3, 3.1, 3.2, 3.5,
+                 4, 4.5, 5, 5.5, 6,
+                 6.5, 7)
+    VA_values = ("off", 0.5, 0.6, 0.7, 0.8,
+                 0.9, 1, 1.1, 1.2, 1.3,
+                 1.4, 1.5, 1.6, 1.7, 1.8,
+                 1.9, 2, 2.1, 2.2, 2.3,
+                 2.4, 2.5, 2.6, 2.7, 2.8,
+                 2.9, 3, 3.1, 3.2, 3.5,
+                 4, 4.5, 5, 5.5, 6,
+                 6.5, 7)
+    APW_values = (0.05, 0.1, 0.2, 0.3, 0.4,
+                  0.6, 0.7, 0.8, 0.9, 1,
+                  1.1, 1.2, 1.3, 1.4, 1.5,
+                  1.6, 1.7, 1.8, 1.9)
+    VPW_values = (0.05, 0.1, 0.2, 0.3, 0.4,
+                  0.6, 0.7, 0.8, 0.9, 1,
+                  1.1, 1.2, 1.3, 1.4, 1.5,
+                  1.6, 1.7, 1.8, 1.9)
+    ARP_values = (150, 160, 170, 180, 190,
+                  200, 210, 220, 230, 240,
+                  250, 260, 270, 280, 290,
+                  300, 310, 320, 330, 340,
+                  350, 360, 370, 380, 390,
+                  400, 410, 420, 430, 440,
+                  450, 460, 470, 480, 490,
+                  500)
+    VRP_values = (150, 160, 170, 180, 190,
+                  200, 210, 220, 230, 240,
+                  250, 260, 270, 280, 290,
+                  300, 310, 320, 330, 340,
+                  350, 360, 370, 380, 390,
+                  400, 410, 420, 430, 440,
+                  450, 460, 470, 480, 490,
+                  500)
+    MSR_values = (50, 55, 60, 65, 70,
+                  75, 80, 85, 90, 95, 100,
+                  105, 110, 115, 120, 125,
+                  130, 135, 140, 145, 150,
+                  155, 160, 165, 170, 175)
+    AS_values = (0.25, 0.5, 0.75, 1, 1.5,
+                 2, 2.5, 3, 3.5, 4,
+                 4.5, 5, 5.5, 6, 6.5,
+                 7, 7.5, 8, 8.5, 9,
+                 9.5, 10)
+    VS_values = (0.25, 0.5, 0.75, 1, 1.5,
+                 2, 2.5, 3, 3.5, 4,
+                 4.5, 5, 5.5, 6, 6.5,
+                 7, 7.5, 8, 8.5, 9,
+                 9.5, 10)
+    PVARP_values = (150, 160, 170, 180, 190,
+                  200, 210, 220, 230, 240,
+                  250, 260, 270, 280, 290,
+                  300, 310, 320, 330, 340,
+                  350, 360, 370, 380, 390,
+                  400, 410, 420, 430, 440,
+                  450, 460, 470, 480, 490,
+                  500)
+    AT_values = ("V-Low", "Low", "Med-Low",
+                 "Med", "Med-High", "High",
+                 "V-High")
+    RnT_values = (10, 20, 30, 40, 50)
+    RF_values = (1, 2, 3, 4, 5,
+                 6, 7, 8, 9, 10,
+                 11, 12, 13, 14, 15)
+    RyT_values = (2, 3, 4, 5,
+                 6, 7, 8, 9, 10,
+                 11, 12, 13, 14, 15)
     LRLtextboxState = "disabled"
     URLtextboxState = "disabled"
     AAtextboxState = "disabled"
@@ -193,86 +293,100 @@ def ModesTemplate(mode, frame):
     VPWtextboxState = "disabled"
     VRPtextboxState = "disabled"
     ARPtextboxState = "disabled"
+    MSRtextboxState = "disabled"
+    AStextboxState = "disabled"
+    VStextboxState = "disabled"
+    PVARPtextboxState = "disabled"
+    ATtextboxState = "disabled"
+    RnTtextboxState = "disabled"
+    RFtextboxState = "disabled"
+    RyTtextboxState = "disabled"
         
     if(mode == "AOO"): #all the modes with there certain parameters with each having editable boxes and readonly boxes
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=145)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=195)
     elif(mode == "AAI"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        ARPtextboxState = "normal"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        ARPtextboxState = "readonly"
+        AStextboxState = "readonly"
+        PVARPtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=145)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=195)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=395)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=920,y=195)
+
     elif(mode == "VOO"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        VAtextboxState = "normal"
-        VPWtextboxState = "normal"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        VAtextboxState = "readonly"
+        VPWtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=295)
     elif(mode == "VVI"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        VAtextboxState = "normal"
-        VPWtextboxState = "normal"
-        VRPtextboxState = "normal"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=247)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=297)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=347)
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        VAtextboxState = "readonly"
+        VPWtextboxState = "readonly"
+        VRPtextboxState = "readonly"
+        VStextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=245)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=295)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=345)
     elif(mode == "AOOR"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        ARPtextboxState = "normal"
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
-        Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        ARPtextboxState = "readonly"
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=45)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=95)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=145)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=195)
+        Frame(frame,width=202,height=2,bg='black').place(x=320,y=395)
     elif(mode == "VOOR"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        ARPtextboxState = "normal"
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        ARPtextboxState = "readonly"
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
     elif(mode == "AAIR"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        ARPtextboxState = "normal"
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        ARPtextboxState = "readonly"
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=197)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=397)
     elif(mode == "VVIR"):
-        LRLtextboxState = "normal"
-        URLtextboxState = "normal"
-        AAtextboxState = "normal"
-        APWtextboxState = "normal"
-        ARPtextboxState = "normal"
+        LRLtextboxState = "readonly"
+        URLtextboxState = "readonly"
+        AAtextboxState = "readonly"
+        APWtextboxState = "readonly"
+        ARPtextboxState = "readonly"
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=47)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=97)
         Frame(frame,width=202,height=2,bg='black').place(x=320,y=147)
@@ -281,38 +395,71 @@ def ModesTemplate(mode, frame):
     else:
         mode = "OFF"
 
-    #CSS
-    LRL_entry = Spinbox(frame, textvariable = LRL, values = LRL_values, state = LRLtextboxState, font = ("Helvetica", 15))
+    #Input boxes (spinboxes)
+    LRL_entry = Spinbox(frame, width=25, values = LRL_values, state = LRLtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
     LRL_entry.pack()
     LRL_entry.place(x=320,y=20)
     
-    URL_entry = Entry(frame, width=25, state = URLtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
+    URL_entry = Spinbox(frame, width=25, values = URL_values, state = URLtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = URL)
     URL_entry.pack()
     URL_entry.place(x=320,y=70)
     
-    AA_entry = Entry(frame, width=25, state = AAtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
+    AA_entry = Spinbox(frame, width=25, values = AA_values, state = AAtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AA)
     AA_entry.pack()
     AA_entry.place(x=320,y=120)
     
-    APW_entry = Entry(frame, width=25, state = APWtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
+    APW_entry = Spinbox(frame, width=25, values = APW_values, state = APWtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = APW)
     APW_entry.pack()
     APW_entry.place(x=320,y=170)
     
-    VA_entry = Entry(frame, width=25, state = VAtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
+    VA_entry = Spinbox(frame, width=25, values = VA_values, state = VAtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VA)
     VA_entry.pack()
     VA_entry.place(x=320,y=220)
     
-    VPW_entry = Entry(frame, width=25, state = VPWtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
+    VPW_entry = Spinbox(frame, width=25, values = VPW_values, state = VPWtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VPW)
     VPW_entry.pack()
     VPW_entry.place(x=320,y=270)
     
-    VRP_entry = Entry(frame, width=25, state = VRPtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
+    VRP_entry = Spinbox(frame, width=25, values = VRP_values, state = VRPtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VRP)
     VRP_entry.pack()
     VRP_entry.place(x=320,y=320)
     
-    ARP_entry = Entry(frame, width=25, state = ARPtextboxState, readonlybackground =  "white",fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
+    ARP_entry = Spinbox(frame, width=25, values = ARP_values, state = ARPtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = ARP)
     ARP_entry.pack()
     ARP_entry.place(x=320,y=370)
+
+    MSR_entry = Spinbox(frame, width=25, values = MSR_values, state = MSRtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = MSR)
+    MSR_entry.pack()
+    MSR_entry.place(x=920,y=20)
+#
+    AS_entry = Spinbox(frame, width=25, values = AS_values, state = AStextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AS)
+    AS_entry.pack()
+    AS_entry.place(x=920,y=70)
+
+    VS_entry = Spinbox(frame, width=25, values = VS_values, state = VStextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = VS)
+    VS_entry.pack()
+    VS_entry.place(x=920,y=120)
+    
+    PVARP_entry = Spinbox(frame, width=25, values = PVARP_values, state = PVARPtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = PVARP)
+    PVARP_entry.pack()
+    PVARP_entry.place(x=920,y=170)
+    
+    AT_entry = Spinbox(frame, width=25, values = AT_values, state = ATtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = AT)
+    AT_entry.pack()
+    AT_entry.place(x=920,y=220)
+    
+    RnT_entry = Spinbox(frame, width=25, values = RnT_values, state = RnTtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = RnT)
+    RnT_entry.pack()
+    RnT_entry.place(x=920,y=270)
+    
+    RF_entry = Spinbox(frame, width=25, values = RF_values, state = RFtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = RF)
+    RF_entry.pack()
+    RF_entry.place(x=920,y=320)
+    
+    RyT_entry = Spinbox(frame, width=25, values = RyT_values, state = RyTtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = RyT)
+    RyT_entry.pack()
+    RyT_entry.place(x=920,y=370)
+
 
 #This is the OFF mode
 def OFF():
@@ -324,8 +471,16 @@ def OFF():
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
     
-    frame = Frame(root,width=875, height= 500, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
 
     LabelsTemplate(frame)
@@ -342,7 +497,7 @@ def AOO():
     VRP = StringVar()
     ARP = StringVar()
 
-    frame = Frame(root,width=875, height= 500, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
     
     LabelsTemplate(frame)
@@ -363,34 +518,6 @@ def AOO():
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
-        else: #goes through the conditions of the parameters 
-            #URL##################################################################################################################################################
-            if(int(URL_value) > 50 and int(URL_value) < 175): #makes sure is bwetween 50-175
-                if(int(URL_value) % 5 != 0): #mulitple of 5
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-            else:
-                Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-
-            #AA###################################################################################################################################################
-            if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2): #makes sure is between .5 and 3.2
-                if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)): #makes sure is multiple of 0.01
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0): #makes sure is between 3.5 and 7
-                if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)): #multiple of 0.5
-                    Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            else: #allows value to be 0
-                if(float(AA_value) != 0):
-                    Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-
-            #APW##################################################################################################################################################
-            if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9): #makes sure value is between 0.1 and 1.9
-                if(not(float(format((float(APW_value) % 0.5), ".4f")) == 0.1 or float(format((float(APW_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            else: #makes sure value can equal 0.05
-                if(float(APW_value) != 0.05):
-                    Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-
-            
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -405,7 +532,7 @@ def VOO():
     VRP = StringVar()
     ARP = StringVar()
 
-    frame = Frame(root,width=875, height= 500, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
 
     LabelsTemplate(frame)
@@ -426,41 +553,6 @@ def VOO():
         
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
-        else:
-            #LRL##################################################################################################################################################
-            if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-                if(int(LRL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            else:
-                if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
-                    Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-                
-
-            #URL##################################################################################################################################################
-            if(int(URL_value) > 50 and int(URL_value) < 175):
-                if(int(URL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-            else:
-                Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-
-            #VA###################################################################################################################################################
-            if(float(VA_value) >= 0.5 and float(VA_value) <= 3.2): #same as AA
-                if(not(float(format((float(VA_value) % 0.1), ".4f")) == 0.1 or float(format((float(VA_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=220)
-            elif(float(VA_value) >= 3.5 and float(VA_value) <= 7.0):
-                if(not(float(format((float(VA_value) % 0.5), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=220)
-            else:
-                if(float(VA_value) != 0):
-                    Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=220)
-
-            #VPW##################################################################################################################################################
-            if(float(VPW_value) >= 0.1 and float(VPW_value) <= 1.9): #same as APW
-                if(not(float(format((float(VPW_value) % 0.5), ".4f")) == 0.1 or float(format((float(VPW_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=270)
-            else:
-                if(float(VPW_value) != 0.05):
-                    Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=270)
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -474,8 +566,16 @@ def AAI():
     VPW = StringVar()
     VRP = StringVar()
     ARP = StringVar()
+    MSR = StringVar()
+    AS = StringVar()
+    VS = StringVar()
+    PVARP = StringVar()
+    AT = StringVar()
+    RnT = StringVar()
+    RF = StringVar()
+    RyT = StringVar()
 
-    frame = Frame(root,width=875, height= 500, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
 
     LabelsTemplate(frame)
@@ -496,48 +596,9 @@ def AAI():
         
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == "" or ARP_value == ""):
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
-        else:
-        #LRL##################################################################################################################################################
-            if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-                if(int(LRL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            else:
-                if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
-                    Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-                
-
-        #URL##################################################################################################################################################
-            if(int(URL_value) > 50 and int(URL_value) < 175):
-                if(int(URL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-            else:
-                Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-
-        #AA###################################################################################################################################################
-            if(float(AA_value) >= 0.5 and float(AA_value) <= 3.2):
-                if(not(float(format((float(AA_value) % 0.1), ".4f")) == 0.1 or float(format((float(AA_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            elif(float(AA_value) >= 3.5 and float(AA_value) <= 7.0):
-                if(not(float(format((float(AA_value) % 0.5), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            else:
-                if(float(AA_value) != 0):
-                    Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-
-        #APW##################################################################################################################################################
-            if(float(APW_value) >= 0.1 and float(APW_value) <= 1.9):
-                if(not(float(format((float(APW_value) % 0.5), ".4f")) == 0.1 or float(format((float(APW_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            else:
-                if(float(APW_value) != 0.05):
-                    Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            
-         #ARP##################################################################################################################################################
-            if(int(ARP_value) < 150 or int(ARP_value) > 500): #makes sure value is between 150 - 500
-                Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
-            elif(int(ARP_value) % 10 != 0): #makes sure value is multiple of 10
-                Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=370)
-            
+#            if(LRL_value > URL_value):
+#                Label(frame, text = "Make Sure LRL value is lower than URL value", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+           
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
 #This is the VVI mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
@@ -551,7 +612,7 @@ def VVI():
     VRP = StringVar()
     ARP = StringVar()
 
-    frame = Frame(root,width=875, height= 500, bg='white')
+    frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=20,y=80)
     
     LabelsTemplate(frame)
@@ -572,113 +633,10 @@ def VVI():
         
         if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == "" or VRP_value == ""):
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
-        else:
-        #LRL##################################################################################################################################################
-            if(int(LRL_value) > 30 and int(LRL_value) < 50) or (int(LRL_value) > 90 and int(LRL_value) < 175):
-                if(int(LRL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-            else:
-                if(not(int(LRL_value) > 50 and int(LRL_value) < 90)):
-                    Label(frame, text = "Value must be inbetween 30-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=20)
-                
-
-        #URL##################################################################################################################################################
-            if(int(URL_value) > 50 and int(URL_value) < 175):
-                if(int(URL_value) % 5 != 0):
-                    Label(frame, text = "Must be mulitple of 5", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-            else:
-                Label(frame, text = "Value must be inbetween 50-175", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=70)
-
-        #VA###################################################################################################################################################
-            if(float(VA_value) >= 0.5 and float(VA_value) <= 3.2):
-                if(not(float(format((float(VA_value) % 0.1), ".4f")) == 0.1 or float(format((float(VA_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            elif(float(VA_value) >= 3.5 and float(VA_value) <= 7.0):
-                if(not(float(format((float(VA_value) % 0.5), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.5"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-            else:
-                if(float(VA_value) != 0):
-                    Label(frame, text = "Value must be either 0 or between 0.5-3.2 or 3.5-7", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=120)
-
-        #VPW##################################################################################################################################################
-            if(float(VPW_value) >= 0.1 and float(VPW_value) <= 1.9):
-                if(not(float(format((float(VPW_value) % 0.5), ".4f")) == 0.1 or float(format((float(VPW_value) % 0.1), ".4f")) == 0)):
-                    Label(frame, text = ("Must be a multiple of 0.1"), fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            else:
-                if(float(VPW_value) != 0.05):
-                    Label(frame, text = "Value must be either 0.05 or between 0.1-1.9", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=170)
-            
-        #VRP##################################################################################################################################################
-            if(int(VRP_value) < 150 or int(VRP_value) > 500):
-                Label(frame, text = "Value must be inbetween 150-500", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
-            elif(int(VRP_value) % 10 != 0):
-                Label(frame, text = "Must be mulitple of 10", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=320)
 
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
-def AOOR():
-    LRL = StringVar()
-    URL = StringVar()
-    AA = StringVar()
-    APW = StringVar()
-    VA = StringVar()
-    VPW = StringVar()
-    VRP = StringVar()
-    ARP = StringVar()
-    
-    frame = Frame(root,width=875, height= 500, bg='white')
-    frame.place(x=20,y=80)
 
-    LabelsTemplate(frame)
-    ModesTemplate("AOOR", frame)
-
-def VOOR():
-    LRL = StringVar()
-    URL = StringVar()
-    AA = StringVar()
-    APW = StringVar()
-    VA = StringVar()
-    VPW = StringVar()
-    VRP = StringVar()
-    ARP = StringVar()
-    
-    frame = Frame(root,width=875, height= 500, bg='white')
-    frame.place(x=20,y=80)
-
-    LabelsTemplate(frame)
-    ModesTemplate("VOOR", frame)
-
-def AAIR():
-    LRL = StringVar()
-    URL = StringVar()
-    AA = StringVar()
-    APW = StringVar()
-    VA = StringVar()
-    VPW = StringVar()
-    VRP = StringVar()
-    ARP = StringVar()
-    
-    frame = Frame(root,width=875, height= 500, bg='white')
-    frame.place(x=20,y=80)
-
-    LabelsTemplate(frame)
-    ModesTemplate("AAIR", frame)
-
-def VVIR():
-    LRL = StringVar()
-    URL = StringVar()
-    AA = StringVar()
-    APW = StringVar()
-    VA = StringVar()
-    VPW = StringVar()
-    VRP = StringVar()
-    ARP = StringVar()
-    
-    frame = Frame(root,width=875, height= 500, bg='white')
-    frame.place(x=20,y=80)
-
-    LabelsTemplate(frame)
-    ModesTemplate("VVIR", frame)
     
 #This function is called when a user clicks the register button
 #It takes all entry fields (username, password, and serial number) and stores them in a new file
