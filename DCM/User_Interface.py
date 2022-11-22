@@ -9,13 +9,12 @@ import linecache
 #If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
 #If the pacemaker serial number matches the one on file, then it goes to the next frame called "session()", this frame unlocks the ability to select modes and edit parameters
 def serialsession():
-    global LRL, URL, AA, APW, VA, VPW, VRP, ARP #all the parameters
-    root.geometry('925x600') #session screen settings
+    root.geometry('925x1000') #session screen settings
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
 
-    frame = Frame(root,width=925, height= 600, bg='white')
+    frame = Frame(root,width=925, height= 1000, bg='white')
     frame.place(x=0,y=0)
     
     options = ["OFF", #differnet mode types
@@ -81,7 +80,7 @@ def serialsession():
 #The default mode is OFF
 def session():
 
-    frame = Frame(root,width=925, height= 600, bg='white')
+    frame = Frame(root,width=925, height= 1000, bg='white')
     frame.place(x=0,y=0)
     OFF()
     
@@ -130,6 +129,18 @@ def LabelsTemplate(frame):
     Label(frame, text = "Ventricular Pulse Width (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=270)
     Label(frame, text = "VRP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=320)
     Label(frame, text = "ARP (ms)",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=370)
+    Label(frame, text = "Maximum Sensor Rate",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=420)
+    Label(frame, text = "Atrial Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=470)
+    Label(frame, text = "Ventricular Sensitivity",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=520)
+    Label(frame, text = "PVARP",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=570)
+    Label(frame, text = "Hysteresis",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=620)
+    Label(frame, text = "Rate Smoothing",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=670)
+    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=720)
+    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=770)
+    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=820)
+    Label(frame, text = "",bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=60,y=870)
+    
+
 
 #This is a template to display all entry fields and it also sets the variables
 def ModesTemplate(mode, frame):
@@ -151,7 +162,20 @@ def ModesTemplate(mode, frame):
     global VRP_entry  
     global ARP_entry 
     
-    LRL = StringVar()
+    #LRL = StringVar()
+    LRL = (30, 35, 40, 45, 50, 
+           51, 52, 53, 54, 55, 
+           56, 57, 58, 59, 60, 
+           61, 62, 63, 64, 65, 
+           66, 67, 68, 69, 70, 
+           71, 72, 73, 74, 75, 
+           76, 77, 78, 79, 80, 
+           81, 82, 83, 84, 85, 
+           86, 87, 88, 89, 90, 
+           95, 100, 105, 110, 115, 
+          120, 125, 130, 135, 140, 
+          145, 150, 155, 160, 165, 
+          170, 175) 
     URL = StringVar()
     AA = StringVar()
     APW = StringVar()
@@ -257,7 +281,7 @@ def ModesTemplate(mode, frame):
         mode = "OFF"
 
     #CSS
-    LRL_entry = Entry(frame, width=25, state = LRLtextboxState, readonlybackground =  "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = LRL)
+    LRL_entry = Spinbox(frame, values = LRL, state = LRLtextboxState, font = ("Helvetica", 15))
     LRL_entry.pack()
     LRL_entry.place(x=320,y=20)
     
@@ -308,7 +332,6 @@ def OFF():
     
 #This is the AOO mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
 def AOO():
-
     LRL = StringVar()
     URL = StringVar()
     AA = StringVar()
