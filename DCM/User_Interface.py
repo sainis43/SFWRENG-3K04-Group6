@@ -501,8 +501,7 @@ def ModesTemplate(mode, frame):
     RyT_entry = Spinbox(frame, width=25, values = RyT_values, state = RyTtextboxState, readonlybackground = "white", fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = RyT)
     RyT_entry.pack()
     RyT_entry.place(x=920,y=370)
-
-
+    
 #This is the OFF mode
 def OFF():
     LRL = StringVar()
@@ -553,6 +552,10 @@ def AOO():
     
     LabelsTemplate(frame)
     ModesTemplate("AOO", frame)
+
+    file1 = open(username1, "r")
+    content = linecache.getline(username1, 4)
+    
     
     def applychanges(): #setting up the confitions for the parameteres
         Frame(frame,width=1000,height=50,bg='black').place(x=50,y=400)
@@ -566,6 +569,17 @@ def AOO():
         ARP_value = ARP_entry.get()
 
         print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value)
+
+        with open(username1, 'r') as file:
+            data = file.readlines()
+
+        data[4] = LRL_value + "\n"
+        data[5] = URL_value + "\n"
+        data[6] = AA_value + "\n"
+        data[7] = APW_value
+
+        with open(username1, 'w') as file:
+            file.writelines(data)
 
         if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
             Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
@@ -1013,6 +1027,7 @@ def register_user():
             file.write(username_info + "\n")
             file.write(password_info + "\n")
             file.write(serial_info)
+            #file.write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             file.close()
 
             username_entry.delete(0, END)
