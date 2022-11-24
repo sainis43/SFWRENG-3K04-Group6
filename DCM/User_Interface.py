@@ -576,13 +576,11 @@ def AOO():
         data[4] = LRL_value + "\n"
         data[5] = URL_value + "\n"
         data[6] = AA_value + "\n"
-        data[7] = APW_value
+        data[7] = APW_value + "\n"
 
         with open(username1, 'w') as file:
             file.writelines(data)
 
-        if(LRL_value == "" or URL_value == "" or AA_value == "" or APW_value == ""): #make sure all boxes are filled else gives error
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -625,8 +623,16 @@ def VOO():
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value)
         
-        if(LRL_value == "" or URL_value == "" or VA_value == "" or VPW_value == ""):
-            Label(frame, text = "Please fill in all fields", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+        with open(username1, 'r') as file:
+            data = file.readlines()
+
+        data[9] = LRL_value + "\n"
+        data[10] = URL_value + "\n"
+        data[11] = VA_value + "\n"
+        data[12] = VPW_value + "\n"
+
+        with open(username1, 'w') as file:
+            file.writelines(data)
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -1026,8 +1032,15 @@ def register_user():
             file = open(username_info, "w") #writes all the info inside file (username, password, and serial number)
             file.write(username_info + "\n")
             file.write(password_info + "\n")
-            file.write(serial_info)
-            #file.write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            file.write(serial_info + "\n")
+            file.write("AOO" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "VOO" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "AAI" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "VVI" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "AOOR" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "VOOR" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" +
+                       "AAIR" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n"  + "|" + "\n" +
+                       "VVIR" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n" + "|" + "\n")
             file.close()
 
             username_entry.delete(0, END)
