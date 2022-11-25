@@ -558,7 +558,7 @@ def AOO():
     
     
     def applychanges(): #setting up the confitions for the parameteres
-        Frame(frame,width=1000,height=50,bg='black').place(x=50,y=400)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -570,18 +570,20 @@ def AOO():
 
         print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value)
 
-        with open(username1, 'r') as file:
-            data = file.readlines()
+        if (int(URL_value) > int(LRL_value)):
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        data[4] = LRL_value + "\n"
-        data[5] = URL_value + "\n"
-        data[6] = AA_value + "\n"
-        data[7] = APW_value + "\n"
+            data[4] = LRL_value + "\n"
+            data[5] = URL_value + "\n"
+            data[6] = AA_value + "\n"
+            data[7] = APW_value + "\n"
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
-        
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
 #This is the VOO mode, it has if statements that set restrictions on what users can enter in the textboxes, if the user is out of bounds, then it sends an error
@@ -611,7 +613,7 @@ def VOO():
     ModesTemplate("VOO", frame)
     
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -623,16 +625,19 @@ def VOO():
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value)
         
-        with open(username1, 'r') as file:
-            data = file.readlines()
+        if (int(URL_value) > int(LRL_value)):
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        data[9] = LRL_value + "\n"
-        data[10] = URL_value + "\n"
-        data[11] = VA_value + "\n"
-        data[12] = VPW_value + "\n"
+            data[9] = LRL_value + "\n"
+            data[10] = URL_value + "\n"
+            data[11] = VA_value + "\n"
+            data[12] = VPW_value + "\n"
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
         
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -662,7 +667,7 @@ def AAI():
     ModesTemplate("AAI", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -681,20 +686,23 @@ def AAI():
         RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + AA_value + " " + APW_value + " " + ARP_value)
-        
-        with open(username1, 'r') as file:
-            data = file.readlines()
 
-        data[14] = LRL_value + "\n"
-        data[15] = URL_value + "\n"
-        data[16] = AA_value + "\n"
-        data[17] = APW_value + "\n"
-        data[18] = ARP_value + "\n"
-        data[19] = AS_value + "\n"
-        data[20] = PVARP_value + "\n"
+        if (int(URL_value) > int(LRL_value)):       
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            data[14] = LRL_value + "\n"
+            data[15] = URL_value + "\n"
+            data[16] = AA_value + "\n"
+            data[17] = APW_value + "\n"
+            data[18] = ARP_value + "\n"
+            data[19] = AS_value + "\n"
+            data[20] = PVARP_value + "\n"
+
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
                        
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
@@ -725,7 +733,7 @@ def VVI():
     ModesTemplate("VVI", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -745,18 +753,21 @@ def VVI():
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
 
-        with open(username1, 'r') as file:
-            data = file.readlines()
+        if (int(URL_value) > int(LRL_value)): 
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        data[22] = LRL_value + "\n"
-        data[23] = URL_value + "\n"
-        data[24] = VA_value + "\n"
-        data[25] = VPW_value + "\n"
-        data[26] = VRP_value + "\n"
-        data[27] = VS_value + "\n"
+            data[22] = LRL_value + "\n"
+            data[23] = URL_value + "\n"
+            data[24] = VA_value + "\n"
+            data[25] = VPW_value + "\n"
+            data[26] = VRP_value + "\n"
+            data[27] = VS_value + "\n"
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
             
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
@@ -786,7 +797,7 @@ def AOOR():
     ModesTemplate("AOOR", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -805,22 +816,25 @@ def AOOR():
         RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
-        
-        with open(username1, 'r') as file:
-            data = file.readlines()
 
-        data[29] = LRL_value + "\n"
-        data[30] = URL_value + "\n"
-        data[31] = AA_value + "\n"
-        data[32] = APW_value + "\n"
-        data[33] = MSR_value + "\n"
-        data[34] = AT_value + "\n"
-        data[35] = RnT_value + "\n"
-        data[36] = RF_value + "\n"
-        data[37] = RyT_value + "\n"
+        if (int(URL_value) > int(LRL_value)): 
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            data[29] = LRL_value + "\n"
+            data[30] = URL_value + "\n"
+            data[31] = AA_value + "\n"
+            data[32] = APW_value + "\n"
+            data[33] = MSR_value + "\n"
+            data[34] = AT_value + "\n"
+            data[35] = RnT_value + "\n"
+            data[36] = RF_value + "\n"
+            data[37] = RyT_value + "\n"
+
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)        
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
 def VOOR():
@@ -849,7 +863,7 @@ def VOOR():
     ModesTemplate("VOOR", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -868,22 +882,25 @@ def VOOR():
         RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
-        
-        with open(username1, 'r') as file:
-            data = file.readlines()
 
-        data[39] = LRL_value + "\n"
-        data[40] = URL_value + "\n"
-        data[41] = VA_value + "\n"
-        data[42] = VPW_value + "\n"
-        data[43] = MSR_value + "\n"
-        data[44] = AT_value + "\n"
-        data[45] = RnT_value + "\n"
-        data[46] = RF_value + "\n"
-        data[47] = RyT_value + "\n"
+        if (int(URL_value) > int(LRL_value)):         
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            data[39] = LRL_value + "\n"
+            data[40] = URL_value + "\n"
+            data[41] = VA_value + "\n"
+            data[42] = VPW_value + "\n"
+            data[43] = MSR_value + "\n"
+            data[44] = AT_value + "\n"
+            data[45] = RnT_value + "\n"
+            data[46] = RF_value + "\n"
+            data[47] = RyT_value + "\n"
+
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)        
             
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
@@ -913,7 +930,7 @@ def AAIR():
     ModesTemplate("AAIR", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -933,25 +950,28 @@ def AAIR():
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
 
-        with open(username1, 'r') as file:
-            data = file.readlines()
+        if (int(URL_value) > int(LRL_value)): 
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        data[49] = LRL_value + "\n"
-        data[50] = URL_value + "\n"
-        data[51] = AA_value + "\n"
-        data[52] = APW_value + "\n"
-        data[53] = ARP_value + "\n"
-        data[54] = MSR_value + "\n"
-        data[55] = AS_value + "\n"
-        data[56] = PVARP_value + "\n"
-        data[57] = AT_value + "\n"
-        data[58] = RnT_value + "\n"
-        data[59] = RF_value + "\n"
-        data[60] = RyT_value + "\n"
+            data[49] = LRL_value + "\n"
+            data[50] = URL_value + "\n"
+            data[51] = AA_value + "\n"
+            data[52] = APW_value + "\n"
+            data[53] = ARP_value + "\n"
+            data[54] = MSR_value + "\n"
+            data[55] = AS_value + "\n"
+            data[56] = PVARP_value + "\n"
+            data[57] = AT_value + "\n"
+            data[58] = RnT_value + "\n"
+            data[59] = RF_value + "\n"
+            data[60] = RyT_value + "\n"
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
-        
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+            
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
     
 def VVIR():
@@ -980,7 +1000,7 @@ def VVIR():
     ModesTemplate("VVIR", frame)
 
     def applychanges():
-        Frame(frame,width=500,height=500,bg='white').place(x=530,y=20)
+        Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
         URL_value = URL_entry.get()
         AA_value = AA_entry.get()
@@ -999,25 +1019,28 @@ def VVIR():
         RyT_value = RyT_entry.get()
 
         print(LRL_value + " " + URL_value + " " + VA_value + " " + VPW_value + " " + VRP_value)
-        
-        with open(username1, 'r') as file:
-            data = file.readlines()
 
-        data[62] = LRL_value + "\n"
-        data[63] = URL_value + "\n"
-        data[64] = VA_value + "\n"
-        data[65] = VPW_value + "\n"
-        data[66] = VRP_value + "\n"
-        data[67] = MSR_value + "\n"
-        data[68] = VS_value + "\n"
-        data[69] = AT_value + "\n"
-        data[70] = RnT_value + "\n"
-        data[71] = RF_value + "\n"
-        data[72] = RyT_value + "\n"
+        if (int(URL_value) > int(LRL_value)):         
+            with open(username1, 'r') as file:
+                data = file.readlines()
 
-        with open(username1, 'w') as file:
-            file.writelines(data)
+            data[62] = LRL_value + "\n"
+            data[63] = URL_value + "\n"
+            data[64] = VA_value + "\n"
+            data[65] = VPW_value + "\n"
+            data[66] = VRP_value + "\n"
+            data[67] = MSR_value + "\n"
+            data[68] = VS_value + "\n"
+            data[69] = AT_value + "\n"
+            data[70] = RnT_value + "\n"
+            data[71] = RF_value + "\n"
+            data[72] = RyT_value + "\n"
 
+            with open(username1, 'w') as file:
+                file.writelines(data)
+        else:
+            Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
+            
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
 
 
