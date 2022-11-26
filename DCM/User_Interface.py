@@ -599,6 +599,8 @@ def AOO():
 
             with open(username1, 'w') as file:
                 file.writelines(data)
+            with open("data.txt", 'w') as file:
+                file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
@@ -653,6 +655,8 @@ def VOO():
             data[12] = VPW_value + "\n"
 
             with open(username1, 'w') as file:
+                file.writelines(data)
+            with open("data.txt", 'w') as file:
                 file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
@@ -719,6 +723,8 @@ def AAI():
 
             with open(username1, 'w') as file:
                 file.writelines(data)
+            with open("data.txt", 'w') as file:
+                file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
                        
@@ -783,6 +789,8 @@ def VVI():
             data[27] = VS_value + "\n"
 
             with open(username1, 'w') as file:
+                file.writelines(data)
+            with open("data.txt", 'w') as file:
                 file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
@@ -851,6 +859,8 @@ def AOOR():
 
             with open(username1, 'w') as file:
                 file.writelines(data)
+            with open("data.txt", 'w') as file:
+                file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)        
     Button(frame, width=39, pady=7, text='Apply Changes', bg='#983cc8', fg='white', border=0, command = applychanges).place(x=60, y=450)
@@ -916,6 +926,8 @@ def VOOR():
             data[47] = RyT_value + "\n"
 
             with open(username1, 'w') as file:
+                file.writelines(data)
+            with open("data.txt", 'w') as file:
                 file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)        
@@ -987,6 +999,8 @@ def AAIR():
 
             with open(username1, 'w') as file:
                 file.writelines(data)
+            with open("data.txt", 'w') as file:
+                file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
             
@@ -1055,6 +1069,8 @@ def VVIR():
             data[72] = RyT_value + "\n"
 
             with open(username1, 'w') as file:
+                file.writelines(data)
+            with open("data.txt", 'w') as file:
                 file.writelines(data)
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
