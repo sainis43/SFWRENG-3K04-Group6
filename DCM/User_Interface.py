@@ -600,7 +600,12 @@ def AOO():
             with open(username1, 'w') as file:
                 file.writelines(data)
             with open("data.txt", 'w') as file:
-                file.writelines(data)
+                file.writelines("1" + " ")
+                file.writelines(LRL_value + " ")
+                file.writelines(URL_value + " ")
+                file.writelines(AA_value + " ")
+                file.writelines(APW_value + " ")
+                file.writelines("0 0 0 0 0 0 0 0 0 0 0 0") 
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)
 
@@ -657,7 +662,13 @@ def VOO():
             with open(username1, 'w') as file:
                 file.writelines(data)
             with open("data.txt", 'w') as file:
-                file.writelines(data)
+                file.writelines("2" + " ")
+                file.writelines(LRL_value + " ")
+                file.writelines(URL_value + " ")
+                file.writelines("0 0 ")
+                file.writelines(VA_value + " ")
+                file.writelines(VPW_value + " ")
+                file.writelines("0 0 0 0 0 0 0 0 0 0") 
         else:
             Label(frame, text = "URL must be higher than LRL", fg = "red", bg='white', font = ('Microsoft YaHei UI Light', 11)).place(x=530, y=415)            
         
