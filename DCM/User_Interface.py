@@ -293,9 +293,8 @@ def ModesTemplate(mode, frame):
                   400, 410, 420, 430, 440,
                   450, 460, 470, 480, 490,
                   500)
-    AT_values = ("V-Low", "Low", "Med-Low",
-                 "Med", "Med-High", "High",
-                 "V-High")
+    AT_values = (1, 2, 3,
+                 4, 5, 6, 7)
     RnT_values = (10, 20, 30, 40, 50)
     RF_values = (1, 2, 3, 4, 5,
                  6, 7, 8, 9, 10,
