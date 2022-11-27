@@ -21,7 +21,7 @@ for each in Data:
 
 MODE = array[0]
 LRL = array[1]
-URL =array[2]
+#URL =array[2]
 ATR_AMP = array[3]
 AMP_PULSE_WIDTH = array[4]
 VENT_AMP = array[5]
@@ -44,7 +44,6 @@ if(endian_check()==True):
     Fn_set = b'\x55' #unsigned 85
     MODE_en = struct.pack(">B", int(MODE))
     LRL_en = struct.pack("<B", int(LRL))
-    URL_en =struct.pack("<B", int(URL))
     VENT_AMP_en = struct.pack("<f", float(VENT_AMP))
     VENT_PULSE_WIDTH_en = struct.pack("<f", float(VENT_PULSE_WIDTH))
     VENT_sensitivity_en = struct.pack("<f", float(VENT_sensitivity))
@@ -66,7 +65,6 @@ else:
     Fn_set = b'\x55' #unsigned 85
     MODE_en = struct.pack(">B", int(MODE))
     LRL_en = struct.pack(">B", int(LRL))
-    URL_en =struct.pack(">B", int(URL))
     VENT_AMP_en = struct.pack(">f", float(VENT_AMP))
     VENT_PULSE_WIDTH_en = struct.pack(">f", float(VENT_PULSE_WIDTH))
     VENT_sensitivity_en = struct.pack(">f", float(VENT_sensitivity))
@@ -87,7 +85,6 @@ else:
 ##print("Fn_set: ", Fn_set)
 ##print("MODE: ", MODE_en)
 ##print("LRL_en: ", LRL_en)
-##print("URL_en: ", URL_en)
 ##print("MSR_en: ", MSR_en)
 ##print("ATR_AMP_en: ", ATR_AMP_en)
 ##print("AMP_PULSE_WIDTH_en: ", AMP_PULSE_WIDTH_en)
@@ -105,7 +102,6 @@ else:
 
 MODE_de = struct.unpack("B", MODE_en)
 LRL_de = struct.unpack("B", LRL_en)
-URL_de =struct.unpack("B", URL_en)
 VENT_AMP_de = struct.unpack("f", VENT_AMP_en)
 VENT_PULSE_WIDTH_de = struct.unpack("f", VENT_PULSE_WIDTH_en)
 VENT_sensitivity_de = struct.unpack("f", VENT_sensitivity_en)
@@ -122,28 +118,27 @@ Response_factor_de = struct.unpack("B", Response_factor_en)
 Recovery_time_de = struct.unpack("B", Recovery_time_en)
 
 
-##print("MODE_en: ", MODE_de[0])
-##print("LRL_en: ", LRL_de[0])
-##print("URL_en: ", URL_de[0])
-##print("MSR_en: ", MSR_de[0])
-##print("ATR_AMP_en: ", ATR_AMP_de[0])
-##print("AMP_PULSE_WIDTH_en: ", AMP_PULSE_WIDTH_de[0])
-##print("AMP_sensitivity_en: ", AMP_sensitivity_de[0])
-##print("VENT_AMP_en: ", VENT_AMP_de[0])
-##print("VENT_PULSE_WIDTH_en: ", VENT_PULSE_WIDTH_de[0])
-##print("VENT_sensitivity_en: ", VENT_sensitivity_de[0])
-##print("ARP_en: ", ARP_de[0])
-##print("VRP_en: ", VRP_de[0])
-##print("PVARP_en: ", PVARP_de[0])
-##print("Activity_theshold_en: ", Activity_theshold_de[0])
-##print("Reaction_time_en: ", Reaction_time_de[0])
-##print("Response_factor_en: ", Response_factor_de[0])
-##print("Recovery_time_en: ", Recovery_time_de[0])
+print("MODE_en: ", MODE_de[0])
+print("LRL_en: ", LRL_de[0])
+print("MSR_en: ", MSR_de[0])
+print("ATR_AMP_en: ", ATR_AMP_de[0])
+print("AMP_PULSE_WIDTH_en: ", AMP_PULSE_WIDTH_de[0])
+print("AMP_sensitivity_en: ", AMP_sensitivity_de[0])
+print("VENT_AMP_en: ", VENT_AMP_de[0])
+print("VENT_PULSE_WIDTH_en: ", VENT_PULSE_WIDTH_de[0])
+print("VENT_sensitivity_en: ", VENT_sensitivity_de[0])
+print("ARP_en: ", ARP_de[0])
+print("VRP_en: ", VRP_de[0])
+print("PVARP_en: ", PVARP_de[0])
+print("Activity_theshold_en: ", Activity_theshold_de[0])
+print("Reaction_time_en: ", Reaction_time_de[0])
+print("Response_factor_en: ", Response_factor_de[0])
+print("Recovery_time_en: ", Recovery_time_de[0])
 
 
 
 
-Signal_set = Start + Fn_set + MODE_en + LRL_en + URL_en + ATR_AMP_en + AMP_PULSE_WIDTH_en + VENT_AMP_en + VENT_PULSE_WIDTH_en + VRP_en + ARP_en + MSR_en + AMP_sensitivity_en + VENT_sensitivity_en + PVARP_en + Activity_theshold_en + Reaction_time_en + Response_factor_en + Recovery_time_en
+Signal_set = Start + Fn_set + MODE_en + LRL_en + ATR_AMP_en + AMP_PULSE_WIDTH_en + VENT_AMP_en + VENT_PULSE_WIDTH_en + VRP_en + ARP_en + MSR_en + AMP_sensitivity_en + VENT_sensitivity_en + PVARP_en + Activity_theshold_en + Reaction_time_en + Response_factor_en + Recovery_time_en
 print(Signal_set)
 
 #Signal_echo = Start + SYNC + MODE_en + LRL_en + URL_en + ATR_AMP_en + AMP_PULSE_WIDTH_en + VENT_AMP_en + VENT_PULSE_WIDTH_en + VRP_en + ARP_en + MSR_en + AMP_sensitivity_en + VENT_sensitivity_en + PVARP_en + Activity_theshold_en + Reaction_time_en + Response_factor_en + Recovery_time_en
