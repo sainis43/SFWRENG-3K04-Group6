@@ -55,19 +55,17 @@ def serialsession():
     menu.pack()
 
     def connected():
+        session()
         try:
             for i in serial.tools.list_ports.comports():
                 if(i.device == "COM4"):
                     frdm_port = i.device
-                    print("device is connected")
-                    #this is where you add the UI message that shows its connected and also not showing that its disconnected
+                    print("connected")
                     session()
             return [frdm_port,True]
 
         except:
-            
-            print("device is not connected")
-            #This is where you add the UI message that shows the devie is not connected and also hide the message that shows its connected
+            print("not connected")
             return [None, False]
 
     serial_verify = StringVar()
