@@ -3,6 +3,8 @@ from tkinter import messagebox
 from tkinter import ttk
 import os
 import linecache
+import serial
+import serial.tools.list_ports
 
 
 #This whole function is the first frame the program goes to after login. It asks for the user's pacemaker serial number to verify that the same pacemaker is being used
@@ -13,9 +15,10 @@ def serialsession():
     root.configure(bg='white')
     root.resizable(False,False)
     root.title('Pacemaker Dashboard')
-
+    
     frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=0,y=0)
+    OFF()
     
     options = ["OFF", #differnet mode types
                "AOO",
@@ -46,32 +49,31 @@ def serialsession():
         elif(menu.get() == "VVIR"):
             VVIR()
             
-    menu = ttk.Combobox(root, value=options, state = "disabled") #the dropdown box for modes
+    menu = ttk.Combobox(root, value=options, state = "disabled")
     menu.current(0)
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
 
     def connected():
-        serial1 = serial_verify.get()
+        try:
+            for i in serial.tools.list_ports.comports():
+                if(i.device == "COM4"):
+                    frdm_port = i.device
+                    print("device is connected")
+                    #this is where you add the UI message that shows its connected and also not showing that its disconnected
+                    session()
+            return [frdm_port,True]
 
-        list_of_files = os.listdir()
-        if username1 in list_of_files:
-            file1 = open(username1, "r")
-            content = linecache.getline(username1, 3)
-            if (serial1 == content.strip()):
-                session()
-                Label(root, text = "Pacemaker Connected", bg = "white", fg = "green", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
-            else:
-                Label(root, text = "This pacemaker does not match the one previously used. \n Please create a new account if you are using a different pacemaker", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=175,y=250)
+        except:
+            
+            print("device is not connected")
+            #This is where you add the UI message that shows the devie is not connected and also hide the message that shows its connected
+            return [None, False]
 
     serial_verify = StringVar()
     Label(frame, text = "Pacemaker Disconnected", bg = "white", fg = "red", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
-    Label(frame, text = "Enter Pacemaker Serial Number", bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 14)).place(x=332,y=80)
-    SerialNumberCheck = Entry(frame, width=25, fg='black', border=0, bg="#f5f5f5", font=('Microsoft YaHei UI Light',11), textvariable = serial_verify)
-    SerialNumberCheck.pack()
-    SerialNumberCheck.place(x=370, y = 110)
 
-    Button(root, width=30, height=1, pady=7, text='Connect', bg='#983cc8', fg='white', border=0, command = connected).place(x=362, y=140)
+    Button(root, width=10, height=1, pady=2, text='Refresh', bg='#983cc8', fg='white', border=0, command = connected).place(x=3, y=30)
 
 
 #This is the session mode, this frame unlocks the ability to select modes and edit parameters
@@ -82,6 +84,7 @@ def session():
 
     frame = Frame(root,width=1250, height= 600, bg='white')
     frame.place(x=0,y=0)
+    Label(frame, text = "Pacemaker Connected", bg = "white", fg = "green", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
     OFF()
     
     options = ["OFF", #differnet mode types
