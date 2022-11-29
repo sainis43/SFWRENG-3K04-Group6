@@ -604,7 +604,7 @@ def AOO():
     AA_prev = linecache.getline(username1, 7)
     APW_prev = linecache.getline(username1, 8)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + AA_prev.strip() + " " + APW_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     
     def applychanges(): #setting up the confitions for the parameteres
@@ -675,7 +675,7 @@ def VOO():
     VA_prev = linecache.getline(username1, 12)
     VPW_prev = linecache.getline(username1, 13)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + VA_prev.strip() + " " + VPW_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
     
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -749,7 +749,7 @@ def AAI():
     PVARP_prev = linecache.getline(username1, 21)
 
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + ARP_prev + AS_prev + PVARP_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + AA_prev.strip() + " " + APW_prev.strip() + " " + ARP_prev.strip() + " " + AS_prev.strip() + " " + PVARP_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -838,7 +838,7 @@ def VVI():
     VRP_prev = linecache.getline(username1, 27)
     VS_prev = linecache.getline(username1, 28)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + VRP_prev + VS_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + VA_prev.strip() + " " + VPW_prev.strip() + " " + VRP_prev.strip() + " " + VS_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -926,7 +926,7 @@ def AOOR():
     RF_prev = linecache.getline(username1, 37)
     RyT_prev = linecache.getline(username1, 38)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + MSR_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + AA_prev.strip() + " " + APW_prev.strip() + " " + MSR_prev.strip() + " " + AT_prev.strip() + " " + RnT_prev.strip() + " " + RF_prev.strip() + " " + RyT_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -1019,7 +1019,7 @@ def VOOR():
     RF_prev = linecache.getline(username1, 47)
     RyT_prev = linecache.getline(username1, 48)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + MSR_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + VA_prev.strip() + " " + VPW_prev.strip() + " " + MSR_prev.strip() + " " + AT_prev.strip() + " " + RnT_prev.strip() + " " + RF_prev.strip() + " " + RyT_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -1116,7 +1116,7 @@ def AAIR():
     RF_prev = linecache.getline(username1, 60)
     RyT_prev = linecache.getline(username1, 61)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + ARP_prev + MSR_prev + AS_prev + PVARP_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + AA_prev.strip() + " " + APW_prev.strip() + " " + ARP_prev.strip() + " " + MSR_prev.strip() + " " + AS_prev.strip() + " " + PVARP_prev.strip() + " " + AT_prev.strip() + " " + RnT_prev.strip() + " " + RF_prev.strip() + " " + RyT_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -1217,7 +1217,7 @@ def VVIR():
     RF_prev = linecache.getline(username1, 72)
     RyT_prev = linecache.getline(username1, 73)
 
-    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + VRP_prev + MSR_prev + VS_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+    Label(frame, text = ("The previous values were \n" + LRL_prev.strip() + " " + URL_prev.strip() + " " + VA_prev.strip() + " " + VPW_prev.strip() + " " + VRP_prev.strip() + " " + MSR_prev.strip() + " " + VS_prev.strip() + " " + AT_prev.strip() + " " + RnT_prev.strip() + " " + RF_prev.strip() + " " + RyT_prev.strip()),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
 
     def applychanges():
