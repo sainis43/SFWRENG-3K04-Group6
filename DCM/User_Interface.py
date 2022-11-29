@@ -59,7 +59,6 @@ def serialsession():
 
 
     def connected():
-        session()
         try:
             for i in serial.tools.list_ports.comports():
                 if(i.device == "COM4"):
