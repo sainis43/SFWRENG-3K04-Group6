@@ -108,9 +108,10 @@ Signal_echo = Start + SYNC + MODE_en + LRL_en + ATR_AMP_en + AMP_PULSE_WIDTH_en 
 with serial.Serial(frdm_port, 115200) as pacemaker:
     pacemaker.write(Signal_set)
     print(Signal_set)
+    
 with serial.Serial(frdm_port, 115200) as pacemaker:
     pacemaker.write(Signal_echo)
-    data = pacemaker.read(38) #should be 37?
+    data = pacemaker.read(38) #should be 37
     print("\n")
     print(data)
     MODE_de = data[0]

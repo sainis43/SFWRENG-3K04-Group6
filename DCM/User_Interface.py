@@ -6,8 +6,8 @@ import linecache
 import serial
 import serial.tools.list_ports
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib import pyplot as plt
+from matplotlib import animation
 
 #This whole function is the first frame the program goes to after login. It asks for the user's pacemaker serial number to verify that the same pacemaker is being used
 #If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
@@ -93,26 +93,21 @@ def session():
     Label(frame, text = "Pacemaker Connected", bg = "white", fg = "green", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
     OFF()
     def egram():
-        x_data = []
-        y_data = []
+        figure = plt.figure()
+        egraph = plt.axes(xlim=(0, 2), ylim=(-2, 2))
+        line, = egraph.plot([], [], lw=2)
+        
+        def init():
+            line.set_data([], [])
+            return line,
 
-        fig, ax = plt.subplots()
-        ax.set_xlim(0, 105)
-        ax.set_ylim(0, 12)
-        line, = ax.plot(0, 0)
-
-        def animation_frame(i):
-                x_data.append(i * 10)
-                y_data.append(i)
-
-                line.set_xdata(x_data)
-                line.set_ydata(y_data)
-                return line, 
-
-        animation = FuncAnimation(fig, func=animation_frame, frames=np.arange(0, 10, 0.1), interval=10)
-        plt.show()
+        def animate(i):
+            x = np.linspace(0, 2, 1000)
+            y = np.sin(2 * np.pi * (x - 0.01 * i))
+            line.set_data(x, y)
+            return line,
+        anim = animation.FuncAnimation(figure, animate, init_func=init, frames=100, interval=25, blit=True)
             
-        animation = FuncAnimation(fig, func = animation_frame, frames = np.arange(0, 10, 0.01), interval = 10)
         plt.show()
 
     Button(root, width=10, height=1, pady=2, text='egram', bg='#983cc8', fg='white', border=0, command = egram).place(x=1000, y=30)
@@ -604,8 +599,13 @@ def AOO():
     ModesTemplate("AOO", frame)
 
     file1 = open(username1, "r")
-    content = linecache.getline(username1, 4)
-    
+    LRL_prev = linecache.getline(username1, 5)
+    URL_prev = linecache.getline(username1, 6)
+    AA_prev = linecache.getline(username1, 7)
+    APW_prev = linecache.getline(username1, 8)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+
     
     def applychanges(): #setting up the confitions for the parameteres
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -668,6 +668,14 @@ def VOO():
 
     LabelsTemplate(frame)
     ModesTemplate("VOO", frame)
+
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 10)
+    URL_prev = linecache.getline(username1, 11)
+    VA_prev = linecache.getline(username1, 12)
+    VPW_prev = linecache.getline(username1, 13)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
     
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -730,6 +738,18 @@ def AAI():
 
     LabelsTemplate(frame)
     ModesTemplate("AAI", frame)
+
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 15)
+    URL_prev = linecache.getline(username1, 16)
+    AA_prev = linecache.getline(username1, 17)
+    APW_prev = linecache.getline(username1, 18)
+    ARP_prev = linecache.getline(username1, 19)
+    AS_prev = linecache.getline(username1, 20)
+    PVARP_prev = linecache.getline(username1, 21)
+
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + ARP_prev + AS_prev + PVARP_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -810,6 +830,16 @@ def VVI():
     LabelsTemplate(frame)
     ModesTemplate("VVI", frame)
 
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 23)
+    URL_prev = linecache.getline(username1, 24)
+    VA_prev = linecache.getline(username1, 25)
+    VPW_prev = linecache.getline(username1, 26)
+    VRP_prev = linecache.getline(username1, 27)
+    VS_prev = linecache.getline(username1, 28)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + VRP_prev + VS_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
@@ -884,6 +914,19 @@ def AOOR():
     
     LabelsTemplate(frame)
     ModesTemplate("AOOR", frame)
+
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 30)
+    URL_prev = linecache.getline(username1, 31)
+    AA_prev = linecache.getline(username1, 32)
+    APW_prev = linecache.getline(username1, 33)
+    MSR_prev = linecache.getline(username1, 34)
+    AT_prev = linecache.getline(username1, 35)
+    RnT_prev = linecache.getline(username1, 36)
+    RF_prev = linecache.getline(username1, 37)
+    RyT_prev = linecache.getline(username1, 38)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + MSR_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -965,6 +1008,19 @@ def VOOR():
     LabelsTemplate(frame)
     ModesTemplate("VOOR", frame)
 
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 40)
+    URL_prev = linecache.getline(username1, 41)
+    VA_prev = linecache.getline(username1, 42)
+    VPW_prev = linecache.getline(username1, 43)
+    MSR_prev = linecache.getline(username1, 44)
+    AT_prev = linecache.getline(username1, 45)
+    RnT_prev = linecache.getline(username1, 46)
+    RF_prev = linecache.getline(username1, 47)
+    RyT_prev = linecache.getline(username1, 48)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + MSR_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
         LRL_value = LRL_entry.get()
@@ -1045,6 +1101,22 @@ def AAIR():
     
     LabelsTemplate(frame)
     ModesTemplate("AAIR", frame)
+
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 50)
+    URL_prev = linecache.getline(username1, 51)
+    AA_prev = linecache.getline(username1, 52)
+    APW_prev = linecache.getline(username1, 53)
+    ARP_prev = linecache.getline(username1, 54)
+    MSR_prev = linecache.getline(username1, 55)
+    AS_prev = linecache.getline(username1, 56)
+    PVARP_prev = linecache.getline(username1, 57)
+    AT_prev = linecache.getline(username1, 58)
+    RnT_prev = linecache.getline(username1, 59)
+    RF_prev = linecache.getline(username1, 60)
+    RyT_prev = linecache.getline(username1, 61)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + AA_prev + APW_prev + ARP_prev + MSR_prev + AS_prev + PVARP_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
@@ -1131,6 +1203,22 @@ def VVIR():
     
     LabelsTemplate(frame)
     ModesTemplate("VVIR", frame)
+
+    file1 = open(username1, "r")
+    LRL_prev = linecache.getline(username1, 63)
+    URL_prev = linecache.getline(username1, 64)
+    VA_prev = linecache.getline(username1, 65)
+    VPW_prev = linecache.getline(username1, 66)
+    VRP_prev = linecache.getline(username1, 67)
+    MSR_prev = linecache.getline(username1, 68)
+    VS_prev = linecache.getline(username1, 69)
+    AT_prev = linecache.getline(username1, 70)
+    RnT_prev = linecache.getline(username1, 71)
+    RF_prev = linecache.getline(username1, 72)
+    RyT_prev = linecache.getline(username1, 73)
+
+    Label(frame, text = ("The previous values were \n" + LRL_prev + URL_prev + VA_prev + VPW_prev + VRP_prev + MSR_prev + VS_prev + AT_prev + RnT_prev + RF_prev + RyT_prev),bg = "white", fg = "black", font = ('Microsoft YaHei UI Light', 11)).place(x=530,y=415)
+
 
     def applychanges():
         Frame(frame,width=1000,height=50,bg='white').place(x=50,y=400)
