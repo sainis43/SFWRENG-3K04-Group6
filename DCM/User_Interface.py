@@ -102,15 +102,15 @@ def session():
             return line,
 
         def animate(i):
-            x = np.linspace(0, 2, 1000)
-            y = np.sin(2 * np.pi * (x - 0.01 * i))
-            line.set_data(x, y)
+            X = np.linspace(0, 2, 1000)
+            Y = np.sin(2 * np.pi * (X - 0.01 * i))
+            line.set_data(X, Y)
             return line,
         anim = animation.FuncAnimation(figure, animate, init_func=init, frames=100, interval=25, blit=True)
             
         plt.show()
 
-    Button(root, width=10, height=1, pady=2, text='egram', bg='#983cc8', fg='white', border=0, command = egram).place(x=1000, y=30)
+    Button(root, width=10, height=1, pady=2, text='Egram', bg='#983cc8', fg='white', border=0, command = egram).place(x=1000, y=30)
 
     options = ["OFF", #differnet mode types
                "AOO",
