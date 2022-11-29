@@ -5,7 +5,9 @@ import os
 import linecache
 import serial
 import serial.tools.list_ports
-
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 #This whole function is the first frame the program goes to after login. It asks for the user's pacemaker serial number to verify that the same pacemaker is being used
 #If the pacemaker serial number is different than the one on file, then it stays on this screen and presents an error
@@ -29,6 +31,7 @@ def serialsession():
                "VOOR",
                "AAIR",
                "VVIR"]
+
     def optionselected(event): 
         if(menu.get() == "OFF"):
             OFF()
@@ -54,6 +57,7 @@ def serialsession():
     menu.bind("<<ComboboxSelected>>", optionselected)
     menu.pack()
 
+
     def connected():
         session()
         try:
@@ -74,6 +78,10 @@ def serialsession():
     Button(root, width=10, height=1, pady=2, text='Refresh', bg='#983cc8', fg='white', border=0, command = connected).place(x=3, y=30)
 
 
+    
+
+
+
 #This is the session mode, this frame unlocks the ability to select modes and edit parameters
 #Templates are used to set up all labels and entry fields
 #Based on the dropdown that the user selects, the program will change its frame to the corresponding mode
@@ -84,7 +92,31 @@ def session():
     frame.place(x=0,y=0)
     Label(frame, text = "Pacemaker Connected", bg = "white", fg = "green", font = ('Microsoft YaHei UI Light', 14)).place(x=0,y=0)
     OFF()
-    
+    def egram():
+        x_data = []
+        y_data = []
+
+        fig, ax = plt.subplots()
+        ax.set_xlim(0, 105)
+        ax.set_ylim(0, 12)
+        line, = ax.plot(0, 0)
+
+        def animation_frame(i):
+                x_data.append(i * 10)
+                y_data.append(i)
+
+                line.set_xdata(x_data)
+                line.set_ydata(y_data)
+                return line, 
+
+        animation = FuncAnimation(fig, func=animation_frame, frames=np.arange(0, 10, 0.1), interval=10)
+        plt.show()
+            
+        animation = FuncAnimation(fig, func = animation_frame, frames = np.arange(0, 10, 0.01), interval = 10)
+        plt.show()
+
+    Button(root, width=10, height=1, pady=2, text='egram', bg='#983cc8', fg='white', border=0, command = egram).place(x=1000, y=30)
+
     options = ["OFF", #differnet mode types
                "AOO",
                "VOO",
